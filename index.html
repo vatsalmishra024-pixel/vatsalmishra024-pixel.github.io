@@ -16,17 +16,16 @@
     
     <style>
         :root {
-            --primary: #1a1614;
-            --secondary: #2a2420;
-            --accent: #d4916d;
-            --accent-bright: #e8b896;
+            --primary: #0a0e27;
+            --secondary: #1a1f3a;
+            --accent: #4a90e2;
+            --accent-bright: #64b5f6;
             --gold: #f4c430;
-            --text-light: #f5f1ed;
-            --text-muted: #c9b8a8;
-            --gradient-1: linear-gradient(135deg, #d4916d 0%, #c67b5c 100%);
-            --gradient-2: linear-gradient(135deg, #e8b896 0%, #d4916d 100%);
-            --gradient-tech: linear-gradient(120deg, #1a1614 0%, #2a2420 50%, #3a342e 100%);
-            --warm-overlay: rgba(26, 22, 20, 0.85);
+            --text-light: #e8eaf6;
+            --text-muted: #9ca3af;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-tech: linear-gradient(120deg, #0a0e27 0%, #1a1f3a 50%, #2a2f4a 100%);
         }
         
         * {
@@ -55,10 +54,10 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.05;
+            opacity: 0.03;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(212, 145, 109, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(232, 184, 150, 0.4) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(74, 144, 226, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(100, 181, 246, 0.3) 0%, transparent 50%);
         }
         
         /* Navigation */
@@ -143,19 +142,7 @@
             justify-content: center;
             position: relative;
             padding: 8rem 5% 4rem;
-            background: linear-gradient(var(--warm-overlay), var(--warm-overlay)), 
-                        url('https://images.unsplash.com/photo-1494522855154-9297ac14b55f?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent 0%, var(--primary) 100%);
-            z-index: 0;
+            background: var(--gradient-tech);
         }
         
         .hero-content {
@@ -163,14 +150,37 @@
             margin: 0 auto;
             z-index: 1;
             width: 100%;
-            position: relative;
+        }
+        
+        .hero-profile-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-bright);
+            box-shadow: 0 10px 40px rgba(74, 144, 226, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: block;
+            background: var(--secondary);
+        }
+        
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 60px rgba(74, 144, 226, 0.5);
         }
         
         .hero-label {
             display: inline-block;
             padding: 0.5rem 1.2rem;
-            background: rgba(212, 145, 109, 0.15);
-            border: 1px solid rgba(212, 145, 109, 0.3);
+            background: rgba(74, 144, 226, 0.15);
+            border: 1px solid rgba(74, 144, 226, 0.3);
             border-radius: 50px;
             color: var(--accent-bright);
             font-size: 0.85rem;
@@ -187,7 +197,7 @@
             font-weight: 900;
             line-height: 1.2;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #f5f1ed 0%, #e8b896 100%);
+            background: linear-gradient(135deg, #fff 0%, #64b5f6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -264,7 +274,7 @@
         .btn-primary:hover {
             background: var(--accent-bright);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 145, 109, 0.4);
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.4);
         }
         
         .btn-outline {
@@ -353,7 +363,7 @@
         
         .experience-card:hover {
             background: rgba(26, 31, 58, 0.8);
-            border-color: rgba(212, 145, 109, 0.3);
+            border-color: rgba(74, 144, 226, 0.3);
             transform: translateX(10px);
         }
         
@@ -383,7 +393,7 @@
         
         .date-badge {
             padding: 0.5rem 1rem;
-            background: rgba(212, 145, 109, 0.1);
+            background: rgba(74, 144, 226, 0.1);
             border-radius: 50px;
             color: var(--accent-bright);
             font-size: 0.9rem;
@@ -438,13 +448,13 @@
         .project-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            border-color: rgba(212, 145, 109, 0.3);
+            border-color: rgba(74, 144, 226, 0.3);
         }
         
         .project-image {
             width: 100%;
             height: 250px;
-            background: linear-gradient(135deg, #d4916d 0%, #c67b5c 50%, #e8b896 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -478,8 +488,8 @@
         
         .tech-tag {
             padding: 0.4rem 0.9rem;
-            background: rgba(212, 145, 109, 0.1);
-            border: 1px solid rgba(212, 145, 109, 0.2);
+            background: rgba(74, 144, 226, 0.1);
+            border: 1px solid rgba(74, 144, 226, 0.2);
             border-radius: 50px;
             font-size: 0.85rem;
             color: var(--accent-bright);
@@ -504,7 +514,7 @@
         
         .skill-category:hover {
             background: rgba(26, 31, 58, 0.8);
-            border-color: rgba(212, 145, 109, 0.3);
+            border-color: rgba(74, 144, 226, 0.3);
         }
         
         .skill-category h3 {
@@ -537,7 +547,7 @@
         }
         
         .skill-item:hover {
-            background: rgba(212, 145, 109, 0.15);
+            background: rgba(74, 144, 226, 0.15);
             color: var(--accent-bright);
             transform: translateY(-2px);
         }
@@ -560,7 +570,7 @@
         
         .research-card:hover {
             background: rgba(26, 31, 58, 0.8);
-            border-color: rgba(212, 145, 109, 0.3);
+            border-color: rgba(74, 144, 226, 0.3);
             transform: translateY(-5px);
         }
         
@@ -594,7 +604,7 @@
         
         .publication-card:hover {
             background: rgba(26, 31, 58, 0.8);
-            border-color: rgba(212, 145, 109, 0.3);
+            border-color: rgba(74, 144, 226, 0.3);
             transform: translateX(10px);
         }
         
@@ -660,7 +670,7 @@
         
         .contact-link:hover {
             background: rgba(26, 31, 58, 0.8);
-            border-color: rgba(212, 145, 109, 0.3);
+            border-color: rgba(74, 144, 226, 0.3);
             color: var(--accent-bright);
             transform: translateY(-5px);
         }
@@ -690,7 +700,7 @@
             gap: 0.5rem;
             margin-top: 1rem;
             padding: 0.8rem 1.5rem;
-            background: rgba(212, 145, 109, 0.1);
+            background: rgba(74, 144, 226, 0.1);
             border-radius: 50px;
             color: var(--accent-bright);
             font-family: 'JetBrains Mono', monospace;
@@ -897,8 +907,8 @@
         }
         
         .metric-card {
-            background: rgba(212, 145, 109, 0.1);
-            border: 1px solid rgba(212, 145, 109, 0.2);
+            background: rgba(74, 144, 226, 0.1);
+            border: 1px solid rgba(74, 144, 226, 0.2);
             border-radius: 12px;
             padding: 1.5rem;
             text-align: center;
@@ -978,6 +988,9 @@
     <!-- Hero Section -->
     <section class="hero" id="about">
         <div class="hero-content">
+            <div class="hero-profile-section">
+                <img src="profile.jpeg" alt="Vatsal Mishra" class="profile-pic" loading="eager">
+            </div>
             <span class="hero-label">Machine Learning Engineer</span>
             <h1>Building production ML systems that scale</h1>
             <p class="hero-subtitle">
@@ -1009,7 +1022,7 @@
                 <a href="https://drive.google.com/file/d/1JJ-T5JHf0kQJd_SyfC_7c2zOEthFug3M/view?usp=sharing" target="_blank" class="btn btn-primary">
                     <i class="fas fa-file-pdf"></i> View Resume
                 </a>
-                <a href="/cdn-cgi/l/email-protection#245245505745480a494d574c56451516644349454d480a474b49" class="btn btn-outline">
+                <a href="mailto:vatsal.mishra12@gmail.com" class="btn btn-outline">
                     <i class="fas fa-envelope"></i> Get In Touch
                 </a>
                 <a href="https://www.linkedin.com/in/vatsal-mishra-a936a8271/" target="_blank" class="btn btn-outline">
@@ -1371,9 +1384,9 @@
         
         <div class="contact-content fade-in">
             <div class="contact-links">
-                <a href="/cdn-cgi/l/email-protection#ef998e9b9c8e83c182869c879d8ededdaf88828e8683c18c8082" class="contact-link">
+                <a href="mailto:vatsal.mishra12@gmail.com" class="contact-link">
                     <i class="fas fa-envelope"></i>
-                    <span><span class="__cf_email__" data-cfemail="6f190e1b1c0e034102061c071d0e5e5d2f08020e0603410c0002">[email&#160;protected]</span></span>
+                    <span>vatsal.mishra12@gmail.com</span>
                 </a>
                 
                 <a href="https://www.linkedin.com/in/vatsal-mishra-a936a8271/" target="_blank" class="contact-link">
@@ -1631,7 +1644,7 @@
         </div>
     </footer>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -1731,3 +1744,14 @@
                 });
             }
         });
+    </script>
+    
+    <!-- Statcounter -->
+    <script type="text/javascript">
+    var sc_project=13187511; 
+    var sc_invisible=1; 
+    var sc_security="f8e12075"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+</body>
+</html>
