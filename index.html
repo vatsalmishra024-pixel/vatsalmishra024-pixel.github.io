@@ -351,6 +351,244 @@
             line-height: 1.8;
         }
         
+        /* Featured Project Banner */
+        .featured-project {
+            background: linear-gradient(135deg, rgba(42, 36, 32, 0.8) 0%, rgba(42, 36, 32, 0.6) 100%);
+            border: 2px solid rgba(212, 145, 109, 0.3);
+            border-radius: 24px;
+            padding: 0;
+            margin-bottom: 4rem;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .featured-project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-1);
+        }
+        
+        .featured-project:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(212, 145, 109, 0.3);
+            border-color: rgba(212, 145, 109, 0.5);
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            padding: 0.6rem 1.5rem;
+            background: var(--gradient-1);
+            border-radius: 50px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(212, 145, 109, 0.4);
+        }
+        
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: center;
+        }
+        
+        .featured-visual {
+            background: linear-gradient(135deg, #2a5470 0%, #1a3a4d 50%, #0f2638 100%);
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+        
+        .featured-icon {
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .vin-preview {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .vin-input-demo {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        
+        .vin-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .vin-stat {
+            text-align: center;
+        }
+        
+        .vin-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4da8da;
+            display: block;
+        }
+        
+        .vin-stat-label {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .featured-info {
+            padding: 4rem;
+        }
+        
+        .featured-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .featured-tagline {
+            font-size: 1.3rem;
+            color: var(--accent-bright);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        .featured-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .featured-highlights {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+        
+        .featured-highlights li {
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .featured-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-bright);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .featured-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .featured-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-featured {
+            padding: 1.2rem 2.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-featured:hover {
+            background: var(--accent-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 145, 109, 0.5);
+        }
+        
+        .btn-featured-outline {
+            padding: 1.2rem 2.5rem;
+            background: transparent;
+            color: var(--accent-bright);
+            text-decoration: none;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-featured-outline:hover {
+            background: rgba(212, 145, 109, 0.1);
+            border-color: var(--accent-bright);
+        }
+        
         /* Experience Cards */
         .experience-grid {
             display: grid;
@@ -759,6 +997,18 @@
                 width: 220px;
                 height: 220px;
             }
+            
+            .featured-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-visual {
+                order: 2;
+            }
+            
+            .featured-info {
+                order: 1;
+            }
         }
         
         @media (max-width: 768px) {
@@ -798,15 +1048,19 @@
                 grid-template-columns: 1fr;
             }
             
-            .experience-card {
+            .experience-card,
+            .featured-info {
                 padding: 2rem;
             }
             
-            .cta-buttons {
+            .cta-buttons,
+            .featured-actions {
                 flex-direction: column;
             }
             
-            .btn {
+            .btn,
+            .btn-featured,
+            .btn-featured-outline {
                 width: 100%;
                 justify-content: center;
             }
@@ -818,6 +1072,19 @@
             
             .date-badge {
                 align-self: flex-start;
+            }
+            
+            .featured-info h3 {
+                font-size: 2rem;
+            }
+            
+            .featured-visual {
+                padding: 3rem 2rem;
+                min-height: 400px;
+            }
+            
+            .featured-icon {
+                font-size: 5rem;
             }
         }
         
@@ -1071,7 +1338,7 @@
                     <a href="https://drive.google.com/file/d/1JJ-T5JHf0kQJd_SyfC_7c2zOEthFug3M/view?usp=sharing" target="_blank" class="btn btn-primary">
                         <i class="fas fa-file-pdf"></i> View Resume
                     </a>
-                    <a href="/cdn-cgi/l/email-protection#dfa9beabacbeb3f1b2b6acb7adbeeeed9fb8b2beb6b3f1bcb0b2" class="btn btn-outline">
+                    <a href="mailto:vatsal.mishra12@gmail.com" class="btn btn-outline">
                         <i class="fas fa-envelope"></i> Get In Touch
                     </a>
                     <a href="https://www.linkedin.com/in/vatsal-mishra-a936a8271/" target="_blank" class="btn btn-outline">
@@ -1186,10 +1453,76 @@
             <div class="section-label">Portfolio</div>
             <h2 class="section-title">Featured Projects</h2>
             <p class="section-description">
-                Real-world applications of machine learning, computer vision, and data engineering.
+                Real-world applications of machine learning, AI integration, and full-stack development.
             </p>
         </div>
         
+        <!-- VIN Inspector Pro - Featured Project -->
+        <div class="featured-project fade-in">
+            <div class="featured-badge">Latest Project</div>
+            <div class="featured-content">
+                <div class="featured-visual">
+                    <i class="fas fa-car featured-icon"></i>
+                    <div class="vin-preview">
+                        <div class="vin-input-demo">1HGBH41JXMN109186</div>
+                        <div class="vin-stats">
+                            <div class="vin-stat">
+                                <span class="vin-stat-value">&lt;2s</span>
+                                <span class="vin-stat-label">Response</span>
+                            </div>
+                            <div class="vin-stat">
+                                <span class="vin-stat-value">99%+</span>
+                                <span class="vin-stat-label">Accuracy</span>
+                            </div>
+                            <div class="vin-stat">
+                                <span class="vin-stat-value">Free</span>
+                                <span class="vin-stat-label">Forever</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="featured-info">
+                    <h3>VIN Inspector Pro</h3>
+                    <p class="featured-tagline">Free AI-Powered Vehicle Intelligence for Smart Buyers</p>
+                    <p class="featured-description">
+                        A comprehensive VIN decoder built for first-time car buyers and students who can't afford expensive vehicle history reports. 
+                        Instead of spending $30-50 on reports upfront, users get instant, AI-powered insights to determine if they need 
+                        a detailed paid report for specific concerns. Think of it as a guidebook, not an encyclopedia—empowering informed 
+                        decisions without the financial barrier.
+                    </p>
+                    
+                    <ul class="featured-highlights">
+                        <li>Instant comprehensive vehicle insights in under 2 seconds using Claude AI API</li>
+                        <li>Extracts make, model, year, engine specs, safety ratings, and potential concerns</li>
+                        <li>100% free alternative to $30-40 preliminary VIN checks</li>
+                        <li>Built with production-grade FastAPI backend + responsive React frontend</li>
+                        <li>Deployed on Render with automated CI/CD for zero-downtime releases</li>
+                    </ul>
+                    
+                    <div class="featured-tech">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Claude AI</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">REST API</span>
+                        <span class="tech-tag">Async</span>
+                        <span class="tech-tag">CI/CD</span>
+                    </div>
+                    
+                    <div class="featured-actions">
+                        <a href="https://vin-checker-b62u.onrender.com/" target="_blank" class="btn-featured">
+                            <i class="fas fa-rocket"></i> Try Live Demo
+                        </a>
+                        <a href="https://www.linkedin.com/posts/vatsal-mishra-a936a8271_vin-inspector-pro-free-vehicle-history-activity-7426690801222574080-iXS8" target="_blank" class="btn-featured-outline">
+                            <i class="fab fa-linkedin"></i> View Announcement
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Other Projects Grid -->
         <div class="projects-grid">
             <!-- Social Media Dashboard -->
             <div class="project-card fade-in" data-project="social-dashboard">
@@ -1438,9 +1771,9 @@
         
         <div class="contact-content fade-in">
             <div class="contact-links">
-                <a href="/cdn-cgi/l/email-protection#ed9b8c999e8c81c380849e859f8cdcdfad8a808c8481c38e8280" class="contact-link">
+                <a href="mailto:vatsal.mishra12@gmail.com" class="contact-link">
                     <i class="fas fa-envelope"></i>
-                    <span><span class="__cf_email__" data-cfemail="394f584d4a58551754504a514b58080b795e54585055175a5654">[email&#160;protected]</span></span>
+                    <span>vatsal.mishra12@gmail.com</span>
                 </a>
                 
                 <a href="https://www.linkedin.com/in/vatsal-mishra-a936a8271/" target="_blank" class="contact-link">
@@ -1698,7 +2031,7 @@
         </div>
     </footer>
     
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
