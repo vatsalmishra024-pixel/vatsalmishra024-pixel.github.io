@@ -3,40 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vatsal Mishra | Machine Learning Engineer & Software Developer</title>
-    <meta name="description" content="Vatsal Mishra - Machine Learning Engineer specializing in production ML systems, transformer models, and scalable AI infrastructure. Based in Chicago, IL.">
+    <title>Vatsal Mishra | AI & ML Engineer</title>
+    <meta name="description" content="Vatsal Mishra - AI & ML Engineer specializing in production ML systems, LLM integration, and scalable AWS infrastructure. Based in Chicago, IL.">
     
-    <!-- Fonts - Distinctive Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary: #1a1614;
-            --secondary: #2a2420;
-            --accent: #d4916d;
-            --accent-bright: #e8b896;
+            --primary: #111010;
+            --secondary: #1e1b19;
+            --card: #201d1b;
+            --accent: #c8834f;
+            --accent-bright: #e0a878;
+            --accent-dim: rgba(200, 131, 79, 0.12);
             --gold: #c9a55a;
-            --text-light: #f5f1ed;
-            --text-muted: #c9b8a8;
-            --gradient-1: linear-gradient(135deg, #d4916d 0%, #c67b5c 100%);
-            --gradient-2: linear-gradient(135deg, #e8b896 0%, #d4916d 100%);
-            --gradient-warm: linear-gradient(120deg, #1a1614 0%, #2a2420 50%, #3a3430 100%);
+            --text-light: #f2ede8;
+            --text-muted: #b8a898;
+            --text-dim: #7a6e65;
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(200, 131, 79, 0.35);
+            --gradient-accent: linear-gradient(135deg, #c8834f 0%, #b06a38 100%);
+            --gradient-warm: linear-gradient(135deg, #e0a878 0%, #c8834f 100%);
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         
         body {
             font-family: 'Work Sans', sans-serif;
@@ -45,41 +39,50 @@
             overflow-x: hidden;
             line-height: 1.7;
         }
-        
-        /* Animated Background */
-        .bg-animation {
+
+        /* Subtle grid background */
+        body::before {
+            content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
+            z-index: -2;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
             z-index: -1;
-            opacity: 0.05;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(212, 145, 109, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(232, 184, 150, 0.4) 0%, transparent 50%);
+            background:
+                radial-gradient(ellipse at 15% 40%, rgba(200,131,79,0.07) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 70%, rgba(200,131,79,0.05) 0%, transparent 50%);
         }
         
-        /* Navigation */
+        /* ─── NAVIGATION ─── */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 5%;
-            background: rgba(26, 22, 20, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.4rem 5%;
+            background: rgba(17, 16, 16, 0.9);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
             transition: padding 0.3s ease, box-shadow 0.3s ease;
         }
         
         nav.scrolled {
-            padding: 1rem 5%;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 0.9rem 5%;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
         }
         
         .nav-container {
-            max-width: 1400px;
+            max-width: 1380px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -88,179 +91,222 @@
         
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--text-light);
             text-decoration: none;
-            letter-spacing: -0.5px;
-            transition: color 0.3s ease;
+            letter-spacing: -0.3px;
+            transition: color 0.3s;
         }
-        
-        .logo:hover {
-            color: var(--accent-bright);
-        }
+        .logo span { color: var(--accent-bright); }
+        .logo:hover { color: var(--accent-bright); }
         
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
+            align-items: center;
         }
         
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            transition: color 0.3s;
             position: relative;
         }
         
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -4px;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 1.5px;
             background: var(--accent-bright);
             transition: width 0.3s ease;
         }
         
-        .nav-links a:hover {
-            color: var(--text-light);
+        .nav-links a:hover { color: var(--text-light); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            padding: 0.55rem 1.3rem;
+            background: var(--accent-dim);
+            border: 1px solid rgba(200,131,79,0.3);
+            border-radius: 6px;
+            color: var(--accent-bright) !important;
+            font-weight: 600 !important;
+            transition: all 0.3s !important;
         }
-        
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-cta:hover {
+            background: rgba(200,131,79,0.2) !important;
+            border-color: var(--accent-bright) !important;
         }
-        
-        /* Hero Section */
+        .nav-cta::after { display: none !important; }
+
+        /* ─── HERO ─── */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
+            padding: 9rem 5% 5rem;
             position: relative;
-            padding: 8rem 5% 4rem;
-            background: linear-gradient(rgba(26, 22, 20, 0.85), rgba(26, 22, 20, 0.85)), 
-                        url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2144&auto=format&fit=crop') center/cover no-repeat;
             overflow: hidden;
         }
-        
-        .hero::before {
-            content: '';
+
+        .hero-bg-city {
             position: absolute;
-            top: 0;
+            inset: 0;
+            background: linear-gradient(rgba(17,16,16,0.82), rgba(17,16,16,0.88)),
+                        url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2144&auto=format&fit=crop') center/cover no-repeat;
+            z-index: -1;
+        }
+
+        .hero-bg-fade {
+            position: absolute;
+            bottom: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent 0%, rgba(26, 22, 20, 0.3) 50%, var(--primary) 100%);
+            height: 40%;
+            background: linear-gradient(transparent, var(--primary));
             z-index: 0;
         }
         
         .hero-content {
-            max-width: 1400px;
+            max-width: 1380px;
             margin: 0 auto;
-            z-index: 1;
             width: 100%;
             display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 4rem;
+            grid-template-columns: 1fr 300px;
+            gap: 5rem;
             align-items: center;
             position: relative;
+            z-index: 1;
         }
-        
-        .hero-text {
-            order: 1;
-        }
-        
-        .hero-profile-section {
-            order: 2;
-            display: flex;
-            justify-content: flex-end;
+
+        .hero-eyebrow {
+            display: inline-flex;
             align-items: center;
-        }
-        
-        .profile-pic {
-            width: 280px;
-            height: 280px;
-            border-radius: 20px;
-            object-fit: cover;
-            border: 4px solid var(--accent);
-            box-shadow: 0 20px 60px rgba(212, 145, 109, 0.4);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            display: block;
-            background: var(--secondary);
-        }
-        
-        .profile-pic:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 25px 80px rgba(212, 145, 109, 0.6);
-        }
-        
-        .hero-label {
-            display: inline-block;
-            padding: 0.5rem 1.2rem;
-            background: rgba(212, 145, 109, 0.15);
-            border: 1px solid rgba(212, 145, 109, 0.3);
-            border-radius: 50px;
+            gap: 0.6rem;
+            padding: 0.45rem 1.1rem;
+            background: var(--accent-dim);
+            border: 1px solid rgba(200,131,79,0.25);
+            border-radius: 100px;
             color: var(--accent-bright);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease;
+            animation: fadeInUp 0.7s ease both;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent-bright);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.7); }
         }
         
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-size: clamp(2.8rem, 6.5vw, 5.2rem);
             font-weight: 900;
-            line-height: 1.2;
+            line-height: 1.15;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #f5f1ed 0%, #e8b896 100%);
+            background: linear-gradient(140deg, #f2ede8 0%, #e0a878 55%, #c8834f 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 0.8s ease 0.2s backwards;
-            word-wrap: break-word;
+            animation: fadeInUp 0.7s ease 0.15s both;
         }
         
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            font-size: 1.15rem;
             color: var(--text-muted);
-            max-width: 800px;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-            animation: fadeInUp 0.8s ease 0.4s backwards;
+            max-width: 680px;
+            margin-bottom: 2.5rem;
+            line-height: 1.85;
+            animation: fadeInUp 0.7s ease 0.3s both;
         }
+
+        /* Mark Cuban callout */
+        .mark-cuban-badge {
+            display: inline-flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: linear-gradient(135deg, rgba(201,165,90,0.08), rgba(200,131,79,0.06));
+            border: 1px solid rgba(201,165,90,0.25);
+            border-radius: 12px;
+            padding: 1rem 1.4rem;
+            margin-bottom: 2.5rem;
+            max-width: 640px;
+            animation: fadeInUp 0.7s ease 0.45s both;
+        }
+
+        .mark-cuban-badge .mc-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .mark-cuban-badge .mc-text {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .mark-cuban-badge .mc-text strong {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .mark-cuban-badge .mc-text a {
+            color: var(--accent-bright);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.4rem;
+        }
+
+        .mark-cuban-badge .mc-text a:hover { text-decoration: underline; }
         
         .hero-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-            animation: fadeInUp 0.8s ease 0.6s backwards;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.8rem;
+            animation: fadeInUp 0.7s ease 0.55s both;
         }
         
-        .stat {
-            text-align: left;
-        }
+        .stat { text-align: left; }
         
         .stat-number {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--accent-bright);
             display: block;
             line-height: 1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
         
         .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            font-size: 0.8rem;
+            color: var(--text-dim);
             text-transform: uppercase;
             letter-spacing: 1px;
             display: block;
@@ -268,17 +314,17 @@
         
         .cta-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.8s backwards;
+            animation: fadeInUp 0.7s ease 0.65s both;
         }
         
         .btn {
-            padding: 1rem 2.5rem;
+            padding: 0.9rem 2rem;
             border: none;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -286,244 +332,452 @@
             align-items: center;
             gap: 0.5rem;
             white-space: nowrap;
+            font-family: 'Work Sans', sans-serif;
         }
         
         .btn-primary {
-            background: var(--accent);
+            background: var(--gradient-accent);
             color: white;
+            box-shadow: 0 4px 20px rgba(200,131,79,0.25);
         }
-        
         .btn-primary:hover {
-            background: var(--accent-bright);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 145, 109, 0.4);
+            box-shadow: 0 8px 30px rgba(200,131,79,0.4);
         }
         
         .btn-outline {
             background: transparent;
-            color: var(--text-light);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
         }
-        
         .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--accent-bright);
+            border-color: rgba(200,131,79,0.4);
             color: var(--accent-bright);
+            background: var(--accent-dim);
+        }
+
+        /* Profile photo */
+        .hero-profile-section {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            animation: fadeInUp 0.7s ease 0.2s both;
         }
         
-        /* Section Styling */
-        section {
-            padding: 6rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
+        .profile-wrap {
             position: relative;
+        }
+
+        .profile-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 22px;
+            background: var(--gradient-warm);
+            z-index: -1;
+            opacity: 0.6;
+        }
+        
+        .profile-pic {
+            width: 270px;
+            height: 270px;
+            border-radius: 20px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-pic:hover { transform: scale(1.03) rotate(1deg); }
+
+        .profile-badge {
+            position: absolute;
+            bottom: -14px;
+            left: -14px;
+            background: var(--card);
+            border: 1px solid var(--border-hover);
+            border-radius: 10px;
+            padding: 0.6rem 1rem;
+            font-size: 0.8rem;
+            color: var(--accent-bright);
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            white-space: nowrap;
+            z-index: 2;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* ─── SECTIONS ─── */
+        .section-wrap {
+            padding: 6rem 5%;
+        }
+
+        .section-inner {
+            max-width: 1380px;
+            margin: 0 auto;
         }
         
         .section-header {
-            margin-bottom: 4rem;
+            margin-bottom: 3.5rem;
             text-align: center;
         }
         
         .section-label {
             color: var(--accent-bright);
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 2px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             display: block;
         }
         
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
             font-weight: 700;
             color: var(--text-light);
             margin-bottom: 1rem;
             line-height: 1.2;
         }
         
-        .section-description {
-            font-size: 1.2rem;
+        .section-desc {
+            font-size: 1.1rem;
             color: var(--text-muted);
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
             line-height: 1.8;
         }
-        
-        /* Featured Project Banner */
-        .featured-project {
-            background: linear-gradient(135deg, rgba(42, 36, 32, 0.8) 0%, rgba(42, 36, 32, 0.6) 100%);
-            border: 2px solid rgba(212, 145, 109, 0.3);
-            border-radius: 24px;
-            padding: 0;
-            margin-bottom: 4rem;
-            overflow: hidden;
-            position: relative;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+        /* Section divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 0 5%;
         }
         
+        /* ─── EXPERIENCE ─── */
+        .experience-grid { display: grid; gap: 2rem; }
+        
+        .experience-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px; height: 100%;
+            background: var(--gradient-accent);
+            transform: scaleY(0);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: bottom;
+        }
+        
+        .experience-card:hover::before { transform: scaleY(1); }
+        .experience-card:hover {
+            border-color: var(--border-hover);
+            transform: translateX(6px);
+            background: rgba(32, 29, 27, 0.9);
+        }
+
+        .exp-current {
+            border-color: rgba(200,131,79,0.2);
+            background: linear-gradient(135deg, rgba(32,29,27,1) 0%, rgba(28,24,21,1) 100%);
+        }
+
+        .current-dot {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #4ade80;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .current-dot::before {
+            content: '';
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        
+        .company-info h3 {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+        }
+        
+        .role {
+            font-size: 1rem;
+            color: var(--accent-bright);
+            font-weight: 600;
+        }
+        
+        .date-badge {
+            padding: 0.4rem 0.9rem;
+            background: var(--accent-dim);
+            border: 1px solid rgba(200,131,79,0.2);
+            border-radius: 100px;
+            color: var(--accent-bright);
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .experience-description {
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+        
+        .achievements { list-style: none; }
+        
+        .achievements li {
+            padding-left: 1.4rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.97rem;
+        }
+        
+        .achievements li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        /* ─── FEATURED PROJECT ─── */
+        .featured-project {
+            background: var(--card);
+            border: 1px solid rgba(200,131,79,0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         .featured-project::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: var(--gradient-1);
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--gradient-warm);
         }
-        
+
         .featured-project:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 80px rgba(212, 145, 109, 0.3);
-            border-color: rgba(212, 145, 109, 0.5);
+            border-color: rgba(200,131,79,0.4);
+            box-shadow: 0 20px 60px rgba(200,131,79,0.12);
+            transform: translateY(-4px);
         }
-        
+
         .featured-badge {
             position: absolute;
-            top: 2rem;
-            right: 2rem;
-            padding: 0.6rem 1.5rem;
-            background: var(--gradient-1);
-            border-radius: 50px;
+            top: 1.8rem; right: 1.8rem;
+            padding: 0.45rem 1.1rem;
+            background: var(--gradient-accent);
+            border-radius: 100px;
             color: white;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             z-index: 10;
-            box-shadow: 0 4px 15px rgba(212, 145, 109, 0.4);
         }
         
         .featured-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            align-items: center;
+            grid-template-columns: 1fr 1.05fr;
+            align-items: stretch;
         }
         
         .featured-visual {
-            background: linear-gradient(135deg, #2a5470 0%, #1a3a4d 50%, #0f2638 100%);
-            padding: 4rem;
+            background: linear-gradient(135deg, #0f2a42 0%, #0a1f33 50%, #061629 100%);
+            padding: 3.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 500px;
+            min-height: 480px;
             position: relative;
             overflow: hidden;
         }
-        
+
         .featured-visual::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.06) 0%, transparent 65%);
         }
         
         .featured-icon {
-            font-size: 8rem;
-            color: rgba(255, 255, 255, 0.2);
+            font-size: 6rem;
+            color: rgba(255,255,255,0.15);
             margin-bottom: 2rem;
             position: relative;
             z-index: 1;
-            animation: float 3s ease-in-out infinite;
+            animation: float 3.5s ease-in-out infinite;
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-16px); }
         }
         
         .vin-preview {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 12px;
-            padding: 2rem;
-            max-width: 400px;
+            padding: 1.8rem;
+            max-width: 360px;
             width: 100%;
             position: relative;
             z-index: 1;
         }
         
         .vin-input-demo {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
             border-radius: 8px;
-            padding: 1rem;
+            padding: 0.9rem;
             color: white;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-align: center;
             letter-spacing: 2px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .vin-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .vin-feature-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .vin-feature-row .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #4da8da;
+            flex-shrink: 0;
         }
         
         .vin-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(255,255,255,0.07);
         }
         
-        .vin-stat {
-            text-align: center;
-        }
+        .vin-stat { text-align: center; }
+        .vin-stat-value { font-size: 1.3rem; font-weight: 700; color: #4da8da; display: block; }
+        .vin-stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
         
-        .vin-stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #4da8da;
-            display: block;
-        }
-        
-        .vin-stat-label {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .featured-info {
-            padding: 4rem;
-        }
+        .featured-info { padding: 3.5rem; }
         
         .featured-info h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
+            font-size: 2.4rem;
             color: var(--text-light);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.7rem;
             line-height: 1.2;
         }
         
         .featured-tagline {
-            font-size: 1.3rem;
+            font-size: 1.05rem;
             color: var(--accent-bright);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-weight: 600;
         }
+
+        /* Mark Cuban inline callout */
+        .mc-callout {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+            background: linear-gradient(135deg, rgba(201,165,90,0.08), rgba(200,131,79,0.06));
+            border: 1px solid rgba(201,165,90,0.2);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mc-callout .mc-emoji { font-size: 1.3rem; flex-shrink: 0; }
+
+        .mc-callout p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .mc-callout p strong { color: var(--gold); }
+
+        .mc-callout a {
+            color: var(--accent-bright);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.82rem;
+        }
+
+        .mc-callout a:hover { text-decoration: underline; }
         
         .featured-description {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-muted);
             line-height: 1.8;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .featured-highlights {
             list-style: none;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
         
         .featured-highlights li {
-            padding-left: 2rem;
-            margin-bottom: 1rem;
+            padding-left: 1.8rem;
+            margin-bottom: 0.7rem;
             position: relative;
             color: var(--text-muted);
-            font-size: 1.05rem;
+            font-size: 0.97rem;
             line-height: 1.7;
         }
         
@@ -533,383 +787,293 @@
             left: 0;
             color: var(--accent-bright);
             font-weight: bold;
-            font-size: 1.3rem;
         }
         
         .featured-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.7rem;
-            margin-bottom: 2.5rem;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
         }
         
-        .featured-actions {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+        .featured-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
         
         .btn-featured {
-            padding: 1.2rem 2.5rem;
-            background: var(--accent);
+            padding: 1rem 2rem;
+            background: var(--gradient-accent);
             color: white;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.7rem;
-            transition: all 0.3s ease;
+            gap: 0.6rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(200,131,79,0.25);
         }
         
         .btn-featured:hover {
-            background: var(--accent-bright);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 145, 109, 0.5);
+            box-shadow: 0 8px 25px rgba(200,131,79,0.4);
         }
         
         .btn-featured-outline {
-            padding: 1.2rem 2.5rem;
+            padding: 1rem 2rem;
             background: transparent;
             color: var(--accent-bright);
             text-decoration: none;
-            border: 2px solid var(--accent);
+            border: 1px solid rgba(200,131,79,0.35);
             border-radius: 8px;
-            font-weight: 700;
-            font-size: 1.05rem;
+            font-weight: 600;
+            font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.7rem;
-            transition: all 0.3s ease;
+            gap: 0.6rem;
+            transition: all 0.3s;
         }
         
         .btn-featured-outline:hover {
-            background: rgba(212, 145, 109, 0.1);
+            background: var(--accent-dim);
             border-color: var(--accent-bright);
         }
         
-        /* Experience Cards */
-        .experience-grid {
-            display: grid;
-            gap: 3rem;
-        }
-        
-        .experience-card {
-            background: rgba(42, 36, 32, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 3rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .experience-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--gradient-1);
-            transform: scaleY(0);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .experience-card:hover::before {
-            transform: scaleY(1);
-        }
-        
-        .experience-card:hover {
-            background: rgba(42, 36, 32, 0.8);
-            border-color: rgba(212, 145, 109, 0.3);
-            transform: translateX(10px);
-        }
-        
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .company-info h3 {
-            font-size: 1.8rem;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-        
-        .role {
-            font-size: 1.1rem;
-            color: var(--accent-bright);
-            font-weight: 600;
-            line-height: 1.3;
-        }
-        
-        .date-badge {
-            padding: 0.5rem 1rem;
-            background: rgba(212, 145, 109, 0.1);
-            border-radius: 50px;
-            color: var(--accent-bright);
-            font-size: 0.9rem;
-            font-weight: 600;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-        
-        .experience-description {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-            line-height: 1.7;
-        }
-        
-        .achievements {
-            list-style: none;
-        }
-        
-        .achievements li {
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-        
-        .achievements li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--accent-bright);
-            font-weight: bold;
-        }
-        
-        /* Projects Grid */
+        /* ─── PROJECTS GRID ─── */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
         
         .project-card {
-            background: rgba(42, 36, 32, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--card);
+            border: 1px solid var(--border);
             border-radius: 16px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
         }
         
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            border-color: rgba(212, 145, 109, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+            border-color: var(--border-hover);
         }
         
         .project-image {
             width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #d4916d 0%, #c67b5c 50%, #e8b896 100%);
+            height: 200px;
+            background: linear-gradient(135deg, #1e3a2f 0%, #2d4a3e 50%, #1a3028 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: rgba(255, 255, 255, 0.3);
+            font-size: 3.5rem;
+            color: rgba(255,255,255,0.2);
+            position: relative;
+        }
+
+        .project-image.img-blue {
+            background: linear-gradient(135deg, #1e2a3e 0%, #2d3a50 50%, #1a2438 100%);
+        }
+
+        .project-image.img-purple {
+            background: linear-gradient(135deg, #2a1e3e 0%, #3a2d50 50%, #241a38 100%);
         }
         
-        .project-content {
-            padding: 2rem;
-        }
+        .project-content { padding: 1.8rem; }
         
         .project-title {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-light);
-            margin-bottom: 1rem;
+            margin-bottom: 0.7rem;
             line-height: 1.3;
         }
         
         .project-description {
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             line-height: 1.7;
+            font-size: 0.95rem;
         }
         
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
         
         .tech-tag {
-            padding: 0.4rem 0.9rem;
-            background: rgba(212, 145, 109, 0.1);
-            border: 1px solid rgba(212, 145, 109, 0.2);
-            border-radius: 50px;
-            font-size: 0.85rem;
+            padding: 0.3rem 0.75rem;
+            background: var(--accent-dim);
+            border: 1px solid rgba(200,131,79,0.15);
+            border-radius: 100px;
+            font-size: 0.78rem;
             color: var(--accent-bright);
             font-family: 'JetBrains Mono', monospace;
             white-space: nowrap;
         }
         
-        /* Skills Section */
+        /* ─── SKILLS ─── */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.5rem;
         }
         
         .skill-category {
-            background: rgba(42, 36, 32, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+            transition: all 0.3s;
         }
         
         .skill-category:hover {
-            background: rgba(42, 36, 32, 0.8);
-            border-color: rgba(212, 145, 109, 0.3);
+            border-color: var(--border-hover);
+            background: rgba(32,29,27,0.9);
         }
         
         .skill-category h3 {
-            font-size: 1.3rem;
+            font-size: 1.05rem;
             color: var(--accent-bright);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            line-height: 1.3;
-        }
-        
-        .skill-category h3 i {
-            font-size: 1.5rem;
+            gap: 0.7rem;
+            font-weight: 700;
         }
         
         .skill-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            gap: 0.6rem;
         }
         
         .skill-item {
-            padding: 0.6rem 1.2rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
+            padding: 0.45rem 0.9rem;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid var(--border);
+            border-radius: 6px;
             color: var(--text-muted);
-            font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.87rem;
+            transition: all 0.25s;
         }
         
         .skill-item:hover {
-            background: rgba(212, 145, 109, 0.15);
+            background: var(--accent-dim);
             color: var(--accent-bright);
-            transform: translateY(-2px);
+            border-color: rgba(200,131,79,0.3);
+            transform: translateY(-1px);
         }
         
-        /* Research Interests */
+        /* ─── RESEARCH ─── */
         .research-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
         }
         
         .research-card {
-            background: rgba(42, 36, 32, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 2.5rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
             text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s;
         }
         
         .research-card:hover {
-            background: rgba(42, 36, 32, 0.8);
-            border-color: rgba(212, 145, 109, 0.3);
-            transform: translateY(-5px);
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
         }
         
         .research-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--accent-bright);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
         
         .research-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--text-light);
-            margin-bottom: 1rem;
-            line-height: 1.3;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
         }
         
-        .research-card p {
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
+        .research-card p { color: var(--text-muted); line-height: 1.7; font-size: 0.93rem; }
         
-        /* Publications */
+        /* ─── PUBLICATIONS ─── */
         .publication-card {
-            background: rgba(42, 36, 32, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
         }
-        
+
         .publication-card:hover {
-            background: rgba(42, 36, 32, 0.8);
-            border-color: rgba(212, 145, 109, 0.3);
-            transform: translateX(10px);
+            border-color: var(--border-hover);
+            transform: translateX(6px);
+        }
+
+        .pub-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(200,131,79,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-bright);
+            font-size: 1.3rem;
+            flex-shrink: 0;
         }
         
         .publication-title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--text-light);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             line-height: 1.3;
         }
         
         .publication-meta {
             color: var(--text-muted);
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-            line-height: 1.7;
+            margin-bottom: 0.8rem;
+            font-size: 0.92rem;
+            line-height: 1.6;
         }
         
         .publication-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             color: var(--accent-bright);
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.9rem;
+            transition: all 0.3s;
         }
         
         .publication-link:hover {
+            gap: 0.7rem;
             color: var(--accent);
-            gap: 0.8rem;
         }
         
-        /* Contact Section */
-        .contact-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        /* ─── CONTACT ─── */
+        .contact-content { text-align: center; max-width: 700px; margin: 0 auto; }
         
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
             flex-wrap: wrap;
         }
         
@@ -917,295 +1081,163 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
-            padding: 2rem;
-            background: rgba(42, 36, 32, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
+            gap: 0.8rem;
+            padding: 1.8rem 1.5rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
             text-decoration: none;
             color: var(--text-muted);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            min-width: 200px;
+            transition: all 0.3s;
+            min-width: 180px;
         }
         
         .contact-link:hover {
-            background: rgba(42, 36, 32, 0.8);
-            border-color: rgba(212, 145, 109, 0.3);
+            border-color: var(--border-hover);
             color: var(--accent-bright);
-            transform: translateY(-5px);
+            transform: translateY(-4px);
+            background: rgba(32,29,27,0.9);
         }
         
         .contact-link i {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--accent-bright);
         }
+
+        .contact-link span { font-size: 0.9rem; font-weight: 500; }
         
-        /* Footer */
+        /* ─── FOOTER ─── */
         footer {
-            background: rgba(26, 22, 20, 0.8);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3rem 5%;
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 5%;
             text-align: center;
         }
         
         .footer-content {
-            max-width: 1400px;
+            max-width: 1380px;
             margin: 0 auto;
-            color: var(--text-muted);
+            color: var(--text-dim);
+            font-size: 0.9rem;
         }
-        
-        .visitor-counter {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
             margin-top: 1rem;
-            padding: 0.8rem 1.5rem;
-            background: rgba(212, 145, 109, 0.1);
-            border-radius: 50px;
-            color: var(--accent-bright);
-            font-family: 'JetBrains Mono', monospace;
+            flex-wrap: wrap;
         }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--accent-bright); }
         
-        /* Animations */
+        /* ─── ANIMATIONS ─── */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .hero-text {
-                order: 2;
-            }
-            
-            .hero-profile-section {
-                order: 1;
-            }
-            
-            .profile-pic {
-                width: 220px;
-                height: 220px;
-            }
-            
-            .featured-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .featured-visual {
-                order: 2;
-            }
-            
-            .featured-info {
-                order: 1;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 5%;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .hero {
-                padding: 6rem 5% 3rem;
-                min-height: auto;
-            }
-            
-            .hero-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .profile-pic {
-                width: 200px;
-                height: 200px;
-            }
-            
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            section {
-                padding: 4rem 5%;
-            }
-            
-            .projects-grid,
-            .skills-container,
-            .research-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .experience-card,
-            .featured-info {
-                padding: 2rem;
-            }
-            
-            .cta-buttons,
-            .featured-actions {
-                flex-direction: column;
-            }
-            
-            .btn,
-            .btn-featured,
-            .btn-featured-outline {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .experience-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .date-badge {
-                align-self: flex-start;
-            }
-            
-            .featured-info h3 {
-                font-size: 2rem;
-            }
-            
-            .featured-visual {
-                padding: 3rem 2rem;
-                min-height: 400px;
-            }
-            
-            .featured-icon {
-                font-size: 5rem;
-            }
-        }
-        
-        /* Scroll animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
         }
         
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
         
-        /* Project Modal */
+        /* ─── MODALS ─── */
         .modal {
             display: none;
             position: fixed;
             z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            inset: 0;
+            background: rgba(0,0,0,0.93);
             overflow-y: auto;
-            animation: fadeIn 0.3s ease;
         }
         
-        .modal.active {
-            display: block;
-        }
+        .modal.active { display: block; }
         
         .modal-content {
             background: var(--secondary);
             margin: 3rem auto;
-            padding: 0;
-            max-width: 900px;
+            max-width: 860px;
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
             position: relative;
-            animation: slideInDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: slideDown 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .modal-header {
-            padding: 3rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-bottom: 1px solid var(--border);
             position: relative;
         }
         
         .modal-close {
             position: absolute;
-            top: 2rem;
-            right: 2rem;
-            font-size: 2rem;
+            top: 1.5rem; right: 1.5rem;
+            font-size: 1.5rem;
             color: var(--text-muted);
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255,255,255,0.04);
+            transition: all 0.3s;
         }
         
         .modal-close:hover {
             color: var(--text-light);
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.08);
             transform: rotate(90deg);
         }
         
         .modal-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--text-light);
-            margin-bottom: 1rem;
-            line-height: 1.2;
+            margin-bottom: 0.8rem;
             padding-right: 3rem;
         }
         
-        .modal-subtitle {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            line-height: 1.7;
-        }
+        .modal-subtitle { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
         
-        .modal-body {
-            padding: 3rem;
-        }
+        .modal-body { padding: 2.5rem; }
         
-        .modal-section {
-            margin-bottom: 3rem;
-        }
+        .modal-section { margin-bottom: 2.5rem; }
         
         .modal-section h3 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--accent-bright);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            line-height: 1.3;
+            gap: 0.7rem;
+            font-weight: 700;
         }
         
         .modal-section p, .modal-section ul {
             color: var(--text-muted);
             line-height: 1.8;
-            font-size: 1.05rem;
+            font-size: 0.97rem;
         }
         
-        .modal-section ul {
-            list-style: none;
-            padding: 0;
-        }
+        .modal-section ul { list-style: none; }
         
         .modal-section ul li {
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
+            padding-left: 1.4rem;
+            margin-bottom: 0.8rem;
             position: relative;
         }
         
@@ -1214,106 +1246,103 @@
             position: absolute;
             left: 0;
             color: var(--accent-bright);
-            font-weight: bold;
         }
         
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
         }
         
         .metric-card {
-            background: rgba(212, 145, 109, 0.1);
-            border: 1px solid rgba(212, 145, 109, 0.2);
-            border-radius: 12px;
-            padding: 1.5rem;
+            background: var(--accent-dim);
+            border: 1px solid rgba(200,131,79,0.2);
+            border-radius: 10px;
+            padding: 1.3rem;
             text-align: center;
         }
         
         .metric-value {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--accent-bright);
             display: block;
-            margin-bottom: 0.5rem;
-            line-height: 1;
+            margin-bottom: 0.4rem;
         }
         
-        .metric-label {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.3;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .metric-label { color: var(--text-muted); font-size: 0.85rem; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .hero-content { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-text { order: 2; }
+            .hero-profile-section { order: 1; justify-content: center; }
+            .hero-stats { grid-template-columns: repeat(4, 1fr); }
+            .featured-content { grid-template-columns: 1fr; }
+            .featured-visual { order: 2; min-height: 360px; }
+            .featured-info { order: 1; }
         }
         
         @media (max-width: 768px) {
-            .modal-content {
-                margin: 1rem;
-            }
-            
-            .modal-header, .modal-body {
-                padding: 2rem;
-            }
-            
-            .modal-title {
-                font-size: 1.8rem;
-                padding-right: 2rem;
-            }
-            
-            .metrics-grid {
-                grid-template-columns: 1fr;
-            }
+            .nav-links { display: none; }
+            .hero { padding: 7rem 5% 3rem; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .section-wrap { padding: 4rem 5%; }
+            .experience-card { padding: 2rem; }
+            .featured-info { padding: 2rem; }
+            .featured-visual { padding: 2.5rem 1.5rem; }
+            .cta-buttons, .featured-actions { flex-direction: column; }
+            .btn, .btn-featured, .btn-featured-outline { width: 100%; justify-content: center; }
+            .experience-header { flex-direction: column; }
+            .publication-card { flex-direction: column; }
+            .modal-content { margin: 1rem; }
+            .modal-header, .modal-body { padding: 1.8rem; }
+            .modal-title { font-size: 1.5rem; }
+            .profile-pic { width: 220px; height: 220px; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
-    
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">Vatsal Mishra</a>
+            <a href="#" class="logo">Vatsal<span>.</span></a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#research">Research</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="https://drive.google.com/file/d/1IEDGo3jiCwXRxRTa5l39vdqkimVqeQMh/view?usp=sharing" target="_blank" class="nav-cta"><i class="fas fa-file-pdf"></i> Resume</a></li>
             </ul>
         </div>
     </nav>
     
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero" id="about">
+        <div class="hero-bg-city"></div>
+        <div class="hero-bg-fade"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <span class="hero-label">Machine Learning Engineer</span>
-                <h1>Building production ML systems that scale</h1>
+                <div class="hero-eyebrow">Available for opportunities &nbsp;·&nbsp; Chicago, IL</div>
+                <h1>Building production AI systems that scale</h1>
                 <p class="hero-subtitle">
-                    I design, build, and deploy end-to-end machine learning solutions from transformer-based models 
-                    to scalable cloud infrastructure. Specializing in real-time inference, model optimization, and 
-                    production ML pipelines that serve millions of users.
+                    AWS-focused AI Engineer with 3+ years of experience designing, training, and deploying 
+                    production ML systems. Specialized in LLM integration, SageMaker inference pipelines, 
+                    and cloud-native AI infrastructure serving real users at scale.
                 </p>
+
+                <div class="mark-cuban-badge">
+                    <span class="mc-icon">🦈</span>
+                    <div class="mc-text">
+                        <strong>Mark Cuban replied to my cold email</strong> and validated the problem I'm solving with VIN Inspector Pro — giving advice on building a strong foundation before scaling.
+                        <br>
+                        <a href="https://www.linkedin.com/posts/vatsal-mishra-a936a8271_buildinpublic-ai-carbuying-activity-7429669184327925760-iZk_?utm_source=share&utm_medium=member_desktop" target="_blank">Read the LinkedIn post <i class="fas fa-external-link-alt" style="font-size:0.75em;"></i></a>
+                    </div>
+                </div>
                 
                 <div class="hero-stats">
                     <div class="stat">
@@ -1329,13 +1358,13 @@
                         <span class="stat-label">Production Systems</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">1</span>
-                        <span class="stat-label">Published Chapter</span>
+                        <span class="stat-number">V3</span>
+                        <span class="stat-label">VIN Inspector</span>
                     </div>
                 </div>
                 
                 <div class="cta-buttons">
-                    <a href="https://drive.google.com/file/d/1E3LXqaxcKE3Yku7Z8rCP1vV6o6kDxUAQ/view?usp=sharing" target="_blank" class="btn btn-primary">
+                    <a href="https://drive.google.com/file/d/1IEDGo3jiCwXRxRTa5l39vdqkimVqeQMh/view?usp=sharing" target="_blank" class="btn btn-primary">
                         <i class="fas fa-file-pdf"></i> View Resume
                     </a>
                     <a href="mailto:vatsal.mishra12@gmail.com" class="btn btn-outline">
@@ -1348,686 +1377,600 @@
             </div>
             
             <div class="hero-profile-section">
-                <img src="profile.jpeg" alt="Vatsal Mishra" class="profile-pic" loading="eager">
+                <div class="profile-wrap">
+                    <img src="profile.jpeg" alt="Vatsal Mishra" class="profile-pic" loading="eager">
+                    <div class="profile-badge">AI Engineer · Chicago</div>
+                </div>
             </div>
         </div>
     </section>
+
+    <div class="section-divider"></div>
     
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="section-header fade-in">
-            <div class="section-label">Work History</div>
-            <h2 class="section-title">Professional Experience</h2>
-            <p class="section-description">
-                Building production ML systems across industries—from music AI to manufacturing quality control.
-            </p>
-        </div>
-        
-        <div class="experience-grid">
-            <!-- KGS Technology -->
-            <div class="experience-card fade-in">
-                <div class="experience-header">
-                    <div class="company-info">
-                        <h3>KGS Technology Groups, Inc.</h3>
-                        <div class="role">AI Engineer</div>
+    <!-- Experience -->
+    <div class="section-wrap" id="experience">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <span class="section-label">Work History</span>
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-desc">Building production AI & ML systems across music tech, enterprise AI, and manufacturing.</p>
+            </div>
+            
+            <div class="experience-grid">
+
+                <!-- Musync Current -->
+                <div class="experience-card exp-current fade-in">
+                    <div class="current-dot">Current Role</div>
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <h3>Musync LLC</h3>
+                            <div class="role">Software Engineer</div>
+                        </div>
+                        <div class="date-badge">Jan 2026 – Present</div>
                     </div>
-                    <div class="date-badge">May 2024 – Present</div>
+                    <p class="experience-description">
+                        Building evaluation infrastructure, analytics pipelines, and cross-platform API systems supporting 
+                        subscription entitlement and product analytics for mobile and web platforms.
+                    </p>
+                    <ul class="achievements">
+                        <li>Built evaluation and monitoring infrastructure for subscription entitlement systems, including real-time alerting on webhook delivery, role assignment accuracy, and API performance metrics across mobile and web platforms</li>
+                        <li>Designed and implemented analytics event pipelines to track user behaviour across product funnels, enabling data-driven insights on feature adoption and conversion rates</li>
+                        <li>Architected cross-platform API systems on AWS Lambda with structured logging, error tracking, and performance dashboards to support engineering and product teams</li>
+                        <li>Led technical scoping and breakdown of a full-stack subscription platform, translating research and product requirements into a 56-task implementation plan with clear acceptance criteria and dependency mapping</li>
+                    </ul>
                 </div>
-                <p class="experience-description">
-                    Leading end-to-end ML pipeline development for enterprise clients, focusing on real-time inference 
-                    systems and production deployment automation. Architecting scalable solutions that balance 
-                    performance, cost, and reliability.
-                </p>
-                <ul class="achievements">
-                    <li>Architected and deployed production ML pipelines in Python supporting real-time inference for customer-facing applications, processing 10,000+ requests daily with sub-100ms latency</li>
-                    <li>Improved model inference latency by 22% through systematic profiling (PyTorch Profiler, cProfile) and optimization techniques including batching strategies and mixed-precision inference</li>
-                    <li>Automated training, evaluation, and deployment workflows using MLFlow, reducing model iteration time by 40% and enabling reproducible experimentation for data science teams</li>
-                    <li>Designed comprehensive monitoring and observability systems tracking model performance, resource utilization, and system health in production distributed environments</li>
-                    <li>Collaborated with backend engineers to integrate ML services via REST APIs into production systems, ensuring reliable integration handling thousands of requests per second</li>
-                </ul>
-            </div>
-            
-            <!-- Musync LLC -->
-            <div class="experience-card fade-in">
-                <div class="experience-header">
-                    <div class="company-info">
-                        <h3>Musync LLC</h3>
-                        <div class="role">Software Engineer</div>
+
+                <!-- KGS Technology -->
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <h3>KGS Technology Groups, Inc.</h3>
+                            <div class="role">AI Engineer</div>
+                        </div>
+                        <div class="date-badge">May 2025 – Sept 2025</div>
                     </div>
-                    <div class="date-badge">Nov 2023 – Apr 2024</div>
+                    <p class="experience-description">
+                        Built and deployed ML-powered backend services on AWS, integrating SageMaker-hosted models 
+                        into customer-facing applications with production monitoring and performance optimization.
+                    </p>
+                    <ul class="achievements">
+                        <li>Built and deployed ML-powered backend services on AWS, integrating SageMaker-hosted models into customer-facing applications via REST APIs</li>
+                        <li>Collaborated with backend and product teams to integrate services via REST APIs at scale, handling thousands of requests per second</li>
+                        <li>Improved service performance by 22% through systematic profiling, optimization, and system-level improvements</li>
+                        <li>Designed monitoring dashboards to track system health, latency, and error rates in production distributed environments</li>
+                    </ul>
                 </div>
-                <p class="experience-description">
-                    Developed full-stack AI music analysis platform leveraging transformer models for real-time 
-                    melody extraction. Built scalable inference infrastructure on AWS handling high-volume audio processing.
-                </p>
-                <ul class="achievements">
-                    <li>Designed and deployed transformer-based models for real-time melody extraction, achieving high accuracy in production pipelines processing thousands of audio streams per hour</li>
-                    <li>Built high-performance inference serving infrastructure using FastAPI with async processing and dynamic batching, reducing request latency by 27% while scaling to 10x traffic growth</li>
-                    <li>Deployed ML services on AWS (SageMaker, EC2) with automated CI/CD pipelines, enabling safe, repeatable model releases with zero-downtime deployments and automatic rollback capabilities</li>
-                    <li>Implemented comprehensive monitoring and alerting systems to track model performance metrics, inference latency, resource utilization, and error rates across distributed production environments</li>
-                    <li>Established ML engineering best practices and documentation for infrastructure workflows, mentoring team members on scalable system design, deployment automation, and production reliability</li>
-                </ul>
-            </div>
-            
-            <!-- NBC Bearings -->
-            <div class="experience-card fade-in">
-                <div class="experience-header">
-                    <div class="company-info">
-                        <h3>NBC Bearings Pvt Ltd</h3>
-                        <div class="role">Data Scientist</div>
+
+                <!-- Musync Previous -->
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <h3>Musync LLC</h3>
+                            <div class="role">Software Engineer</div>
+                        </div>
+                        <div class="date-badge">Nov 2024 – Apr 2025</div>
                     </div>
-                    <div class="date-badge">Jun 2021 – Aug 2021</div>
+                    <p class="experience-description">
+                        Designed and deployed transformer-based models on Amazon SageMaker for real-time melody extraction. 
+                        Built high-performance inference APIs on AWS handling high-volume audio processing.
+                    </p>
+                    <ul class="achievements">
+                        <li>Designed and deployed transformer-based models using Amazon SageMaker for scalable real-time inference</li>
+                        <li>Built high-performance inference APIs using FastAPI with async processing and dynamic batching, reducing latency by 27% and supporting 10x traffic growth</li>
+                        <li>Deployed ML endpoints on AWS (SageMaker, EC2, S3) with CI/CD pipelines for zero-downtime releases and automated rollback</li>
+                        <li>Implemented model monitoring and logging using CloudWatch to track inference latency, error rates, and model drift</li>
+                        <li>Optimized model performance through batching, quantization, and infrastructure tuning on AWS</li>
+                    </ul>
                 </div>
-                <p class="experience-description">
-                    Developed computer vision pipeline for real-time quality assurance in manufacturing environments. 
-                    Implemented predictive maintenance models reducing operational downtime.
-                </p>
-                <ul class="achievements">
-                    <li>Developed real-time digital gauge recognition CV pipeline (OpenCV + TensorFlow/Keras) to validate parts, reducing defect-related downtime by 15% and improving manufacturing efficiency</li>
-                    <li>Implemented predictive maintenance models with optimized inference pipeline achieving 88% accuracy and 20% faster processing through efficient memory management, multi-threading, and algorithmic improvements</li>
-                    <li>Established data validation and ETL checkpoints ensuring data integrity and consistency across distributed collection points, improving overall system reliability by 15%</li>
-                    <li>Designed robust error handling and recovery mechanisms to ensure system uptime and fault tolerance in production manufacturing environment</li>
-                </ul>
-            </div>
-            
-            <!-- Earlier Experience -->
-            <div class="experience-card fade-in">
-                <div class="experience-header">
-                    <div class="company-info">
-                        <h3>Earlier Roles</h3>
-                        <div class="role">Data Scientist & Python Developer</div>
+                
+                <!-- NBC Bearings -->
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <h3>NBC Bearings Pvt Ltd</h3>
+                            <div class="role">Data Scientist</div>
+                        </div>
+                        <div class="date-badge">Jun 2021 – Aug 2021</div>
                     </div>
-                    <div class="date-badge">2019 – 2020</div>
+                    <ul class="achievements">
+                        <li>Built a real-time CV pipeline using OpenCV and TensorFlow for automated parts validation, reducing defect-related downtime by 15% through optimized inference and ETL data quality checkpoints</li>
+                        <li>Implemented predictive maintenance models achieving 88% accuracy and 20% faster processing through efficient memory management and multi-threading</li>
+                    </ul>
                 </div>
-                <ul class="achievements">
-                    <li><strong>Smartknowers Pvt Ltd</strong> (Oct 2020 – Dec 2020): Engineered neural network for real-time digit recognition using MNIST dataset with TensorFlow/Keras, achieving high accuracy in production deployment</li>
-                    <li><strong>Indian Institute of Technology (ISM)</strong> (May 2019 – Jun 2019): Developed interactive Python applications and contributed to academic research through literature reviews and technical report writing under postgraduate supervision</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="section-header fade-in">
-            <div class="section-label">Portfolio</div>
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-description">
-                Real-world applications of machine learning, AI integration, and full-stack development.
-            </p>
-        </div>
-        
-        <!-- VIN Inspector Pro - Featured Project -->
-        <!-- VIN Inspector Pro - Featured Project -->
-<div class="featured-project fade-in">
-    <div class="featured-badge">Latest Project</div>
-    <div class="featured-content">
-        <div class="featured-visual">
-            <i class="fas fa-car featured-icon"></i>
-            <div class="vin-preview">
-                <div class="vin-input-demo">1HGBH41JXMN109186</div>
-                <div class="vin-stats">
-                    <div class="vin-stat">
-                        <span class="vin-stat-value">&lt;2s</span>
-                        <span class="vin-stat-label">Response</span>
+
+                <!-- Earlier Roles -->
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div class="company-info">
+                            <h3>Earlier Roles</h3>
+                            <div class="role">Data Scientist & Python Developer</div>
+                        </div>
+                        <div class="date-badge">2019 – 2020</div>
                     </div>
-                    <div class="vin-stat">
-                        <span class="vin-stat-value">99%+</span>
-                        <span class="vin-stat-label">Accuracy</span>
-                    </div>
-                    <div class="vin-stat">
-                        <span class="vin-stat-value">Free</span>
-                        <span class="vin-stat-label">Forever</span>
-                    </div>
+                    <ul class="achievements">
+                        <li><strong style="color:var(--text-light)">Smartknowers Pvt Ltd</strong> (Oct–Dec 2020): Engineered a real-time digit recognition neural network using TensorFlow/Keras on MNIST, deployed to production</li>
+                        <li><strong style="color:var(--text-light)">Indian Institute of Technology (ISM)</strong> (May–Jun 2019): Developed interactive Python applications and contributed to academic research under postgraduate supervision</li>
+                    </ul>
                 </div>
-            </div>
-        </div>
-        
-        <div class="featured-info">
-            <h3>VIN Inspector Pro</h3>
-            <p class="featured-tagline">AI-Powered Vehicle Intelligence • Now with Smart Insights & Email Reports</p>
-            <p class="featured-description">
-                A comprehensive VIN decoder empowering first-time car buyers with instant, AI-driven vehicle intelligence. 
-                Get complete vehicle history, real-time market pricing, personalized buying advice, and professional 
-                reports delivered to your inbox all 100% free. No more $40 Carfax fees for preliminary checks.
-            </p>
-            
-            <ul class="featured-highlights">
-                <li><strong>NEW:</strong> AI-powered buying advice with negotiation strategies and red flags detection</li>
-                <li><strong>NEW:</strong> Professional email reports that get comprehensive analysis sent to your inbox instantly</li>
-                <li><strong>NEW:</strong> Real market data scraping from Craigslist with price comparison across major cities</li>
-                <li>Instant comprehensive vehicle insights in under 2 seconds using OPEN AI API</li>
-                <li>Complete vehicle specs from NHTSA database: make, model, year, engine, safety ratings</li>
-                <li>Instant safety recall checks with detailed remediation steps</li>
-                <li>Mileage analysis comparing your vehicle to expected wear patterns</li>
-                <li>Price intelligence: "Great Deal" vs "Overpriced" verdicts with negotiation tips</li>
-                <li>Production-grade deployment on Railway with 99.9% uptime and global CDN</li>
-            </ul>
-            
-            <div style="background: rgba(212, 145, 109, 0.1); border-left: 4px solid var(--accent-bright); padding: 1.5rem; border-radius: 8px; margin: 2rem 0;">
-                <h4 style="color: var(--accent-bright); margin-bottom: 0.8rem; font-size: 1.1rem;">🚀 Coming Soon: AI Damage Assessment</h4>
-                <p style="color: var(--text-muted); margin: 0; line-height: 1.7;">
-                    Upload a photo of your scratched bumper or dented door. AI analyzes the damage severity, 
-                    estimates repair costs from local shops, and provides step-by-step DIY fix instructions. 
-                    Know what you're facing before walking into a body shop.
-                </p>
-            </div>
-            
-            <div class="featured-tech">
-                <span class="tech-tag">Flask</span>
-                <span class="tech-tag">OpenAI GPT-3.5</span>
-                <span class="tech-tag">BeautifulSoup</span>
-                <span class="tech-tag">SendGrid</span>
-                <span class="tech-tag">Python</span>
-                <span class="tech-tag">REST API</span>
-                <span class="tech-tag">Railway</span>
-                <span class="tech-tag">Web Scraping</span>
-                <span class="tech-tag">Async</span>
-            </div>
-            
-            <div class="featured-actions">
-                <a href="https://web-production-abd87.up.railway.app/" target="_blank" class="btn-featured">
-                    <i class="fas fa-rocket"></i> Try Live on Railway
-                </a>
-                <a href="https://www.linkedin.com/posts/vatsal-mishra-a936a8271_vin-inspector-pro-free-vehicle-history-activity-7427932189020930048-kDDs?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEJ8_g8BX5AaTucL-g-OM3qrwZD8eythVpM" target="_blank" class="btn-featured-outline">
-                    <i class="fab fa-linkedin"></i> Read Latest Update
-                </a>
             </div>
         </div>
     </div>
-</div>
-        
-        <!-- Other Projects Grid -->
-        <div class="projects-grid">
-            <!-- Social Media Dashboard -->
-            <div class="project-card fade-in" data-project="social-dashboard">
-                <div class="project-image">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Social Media Analytics Dashboard</h3>
-                    <p class="project-description">
-                        Real-time analytics platform monitoring engagement metrics and campaign performance. 
-                        Engineered scalable data warehousing solution reducing reporting time from weeks to minutes.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Snowflake</span>
-                        <span class="tech-tag">Power BI</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">ETL</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Driver Drowsiness Detection -->
-            <div class="project-card fade-in" data-project="drowsiness-detection">
-                <div class="project-image">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Real-Time Driver Drowsiness Detection</h3>
-                    <p class="project-description">
-                        Vision-based system using advanced fuzzy logic and facial feature recognition algorithms. 
-                        Achieved 74% accuracy with 15% reduction in false alarms. Research conducted under Prof. Monideepa Das.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">OpenCV</span>
-                        <span class="tech-tag">Fuzzy Logic</span>
-                        <span class="tech-tag">Computer Vision</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- NLP Text Classification -->
-            <div class="project-card fade-in" data-project="nlp-classification">
-                <div class="project-image">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Advanced NLP Text Classification</h3>
-                    <p class="project-description">
-                        Sophisticated natural language processing model implementing advanced preprocessing techniques. 
-                        Improved prediction accuracy by 15% through Agile collaboration. Research under Prof. Kai Shu.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">NLP</span>
-                        <span class="tech-tag">spaCy</span>
-                        <span class="tech-tag">Scikit-learn</span>
-                        <span class="tech-tag">Transformers</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
+    <div class="section-divider"></div>
     
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="section-header fade-in">
-            <div class="section-label">Expertise</div>
-            <h2 class="section-title">Technical Skills</h2>
-            <p class="section-description">
-                Full-stack ML engineering from model development to production deployment.
-            </p>
+    <!-- Projects -->
+    <div class="section-wrap" id="projects">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-desc">Real-world applications of LLMs, computer vision, and full-stack AI engineering.</p>
+            </div>
+            
+            <!-- VIN Inspector Pro -->
+            <div class="featured-project fade-in">
+                <div class="featured-badge">V3 Live ✦ Mark Cuban Validated</div>
+                <div class="featured-content">
+                    <div class="featured-visual">
+                        <i class="fas fa-car featured-icon"></i>
+                        <div class="vin-preview">
+                            <div class="vin-input-demo">1HGBH41JXMN109186</div>
+                            <div class="vin-features">
+                                <div class="vin-feature-row"><span class="dot"></span>Flood, airbag & repaint detection via Claude Vision</div>
+                                <div class="vin-feature-row"><span class="dot"></span>NHTSA crash ratings + open federal recalls</div>
+                                <div class="vin-feature-row"><span class="dot"></span>EPA fuel cost + stolen vehicle check</div>
+                                <div class="vin-feature-row"><span class="dot"></span>Real-time market pricing from live listings</div>
+                            </div>
+                            <div class="vin-stats">
+                                <div class="vin-stat">
+                                    <span class="vin-stat-value">&lt;2s</span>
+                                    <span class="vin-stat-label">Response</span>
+                                </div>
+                                <div class="vin-stat">
+                                    <span class="vin-stat-value">100%</span>
+                                    <span class="vin-stat-label">Free</span>
+                                </div>
+                                <div class="vin-stat">
+                                    <span class="vin-stat-value">V3</span>
+                                    <span class="vin-stat-label">Latest</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="featured-info">
+                        <h3>VIN Inspector Pro</h3>
+                        <p class="featured-tagline">AI-Powered Vehicle Intelligence · Claude Vision · Government APIs · AdSense Monetized</p>
+
+                        <div class="mc-callout">
+                            <span class="mc-emoji">🦈</span>
+                            <p><strong>Mark Cuban replied to my cold email</strong> and validated the problem — "Build a strong enough base first so that when you scale, it actually holds up." That feedback directly shaped V2 and V3.
+                            <br><a href="https://www.linkedin.com/posts/vatsal-mishra-a936a8271_buildinpublic-ai-carbuying-activity-7429669184327925760-iZk_?utm_source=share&utm_medium=member_desktop" target="_blank">Read the full story <i class="fas fa-arrow-right" style="font-size:0.75em;"></i></a></p>
+                        </div>
+
+                        <p class="featured-description">
+                            A free, full-stack AI vehicle research platform that eliminates the need for $40 Carfax reports. 
+                            Integrates Claude AI and NHTSA/EPA government APIs to deliver comprehensive vehicle intelligence 
+                            in under 2 seconds — now with a photo inspector that detects flood damage, airbag deployment, 
+                            odometer rollback, and post-accident repaints from a single photo.
+                        </p>
+                        
+                        <ul class="featured-highlights">
+                            <li><strong>Photo Inspector:</strong> Claude Vision analyzes uploaded photos for flood damage, airbag deployment, rolled-back odometers, and repaints</li>
+                            <li><strong>AI Advisor:</strong> Ask anything about the specific car after your scan — powered by Claude AI</li>
+                            <li>Crash test ratings, open federal recalls, owner complaint data from NHTSA in real time</li>
+                            <li>EPA fuel economy with monthly cost estimates and warranty status</li>
+                            <li>Stolen vehicle check + Technical Service Bulletins (TSBs)</li>
+                            <li>Real market pricing scraped from live listings with "Great Deal vs Overpriced" verdict</li>
+                            <li>Deployed on Render with Gunicorn, Google AdSense monetization, zero data retention</li>
+                        </ul>
+                        
+                        <div class="featured-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Claude AI (Anthropic)</span>
+                            <span class="tech-tag">Claude Vision</span>
+                            <span class="tech-tag">NHTSA API</span>
+                            <span class="tech-tag">EPA API</span>
+                            <span class="tech-tag">BeautifulSoup</span>
+                            <span class="tech-tag">Gunicorn</span>
+                            <span class="tech-tag">Render</span>
+                            <span class="tech-tag">Google AdSense</span>
+                        </div>
+                        
+                        <div class="featured-actions">
+                            <a href="https://web-production-abd87.up.railway.app/" target="_blank" class="btn-featured">
+                                <i class="fas fa-rocket"></i> Try It Live
+                            </a>
+                            <a href="https://www.linkedin.com/posts/vatsal-mishra-a936a8271_buildinpublic-ai-carbuying-activity-7429669184327925760-iZk_?utm_source=share&utm_medium=member_desktop" target="_blank" class="btn-featured-outline">
+                                <i class="fab fa-linkedin"></i> Mark Cuban Story
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other Projects -->
+            <div class="projects-grid">
+                <div class="project-card fade-in" data-project="social-dashboard">
+                    <div class="project-image img-blue">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Social Media Analytics Dashboard</h3>
+                        <p class="project-description">Real-time analytics platform monitoring engagement metrics and campaign performance. Reduced reporting time from weeks to minutes through scalable data warehousing.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Snowflake</span>
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">ETL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in" data-project="drowsiness-detection">
+                    <div class="project-image">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Real-Time Driver Drowsiness Detection</h3>
+                        <p class="project-description">Vision-based system using advanced fuzzy logic and facial feature recognition. Achieved 74% accuracy with 15% reduction in false alarms. Research under Prof. Monideepa Das.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">Fuzzy Logic</span>
+                            <span class="tech-tag">Computer Vision</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in" data-project="nlp-classification">
+                    <div class="project-image img-purple">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Advanced NLP Text Classification</h3>
+                        <p class="project-description">NLP model implementing advanced preprocessing techniques. Improved prediction accuracy by 15% through Agile collaboration. Research under Prof. Kai Shu at IIT.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">spaCy</span>
+                            <span class="tech-tag">BERT</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="skills-container">
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-code"></i> Programming</h3>
-                <div class="skill-list">
-                    <span class="skill-item">Python (Expert)</span>
-                    <span class="skill-item">Java</span>
-                    <span class="skill-item">C/C++</span>
-                    <span class="skill-item">JavaScript</span>
-                    <span class="skill-item">SQL</span>
-                    <span class="skill-item">Bash</span>
-                </div>
-            </div>
-            
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-robot"></i> ML & AI</h3>
-                <div class="skill-list">
-                    <span class="skill-item">PyTorch</span>
-                    <span class="skill-item">TensorFlow</span>
-                    <span class="skill-item">Transformers</span>
-                    <span class="skill-item">Keras</span>
-                    <span class="skill-item">Scikit-learn</span>
-                    <span class="skill-item">OpenCV</span>
-                    <span class="skill-item">MLFlow</span>
-                    <span class="skill-item">Hugging Face</span>
-                </div>
-            </div>
-            
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
-                <div class="skill-list">
-                    <span class="skill-item">AWS SageMaker</span>
-                    <span class="skill-item">EC2</span>
-                    <span class="skill-item">S3</span>
-                    <span class="skill-item">Lambda</span>
-                    <span class="skill-item">Docker</span>
-                    <span class="skill-item">CI/CD</span>
-                    <span class="skill-item">Git</span>
-                </div>
-            </div>
-            
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-server"></i> Data Engineering</h3>
-                <div class="skill-list">
-                    <span class="skill-item">Snowflake</span>
-                    <span class="skill-item">PySpark</span>
-                    <span class="skill-item">SparkSQL</span>
-                    <span class="skill-item">Pandas</span>
-                    <span class="skill-item">NumPy</span>
-                    <span class="skill-item">ETL Pipelines</span>
-                </div>
-            </div>
-            
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-network-wired"></i> Web & APIs</h3>
-                <div class="skill-list">
-                    <span class="skill-item">FastAPI</span>
-                    <span class="skill-item">Flask</span>
-                    <span class="skill-item">REST APIs</span>
-                    <span class="skill-item">React</span>
-                    <span class="skill-item">HTML/CSS</span>
-                    <span class="skill-item">Bootstrap</span>
-                </div>
-            </div>
-            
-            <div class="skill-category fade-in">
-                <h3><i class="fas fa-tools"></i> Tools & Practices</h3>
-                <div class="skill-list">
-                    <span class="skill-item">Agile/Scrum</span>
-                    <span class="skill-item">PyTest</span>
-                    <span class="skill-item">Jupyter</span>
-                    <span class="skill-item">Power BI</span>
-                    <span class="skill-item">System Design</span>
-                    <span class="skill-item">Code Review</span>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+
+    <div class="section-divider"></div>
     
-    <!-- Research Interests -->
-    <section id="research">
-        <div class="section-header fade-in">
-            <div class="section-label">Research</div>
-            <h2 class="section-title">Areas of Interest</h2>
-            <p class="section-description">
-                Exploring the frontiers of AI, from transformer architectures to real-time systems.
-            </p>
+    <!-- Skills -->
+    <div class="section-wrap" id="skills">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <span class="section-label">Expertise</span>
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-desc">Full-stack ML engineering from model development to production AWS deployment.</p>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-code"></i> Programming</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Python (Expert)</span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">C/C++</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">Bash</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-robot"></i> ML & AI / LLMs</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">PyTorch</span>
+                        <span class="skill-item">TensorFlow</span>
+                        <span class="skill-item">Claude AI</span>
+                        <span class="skill-item">Transformers</span>
+                        <span class="skill-item">Keras</span>
+                        <span class="skill-item">Scikit-learn</span>
+                        <span class="skill-item">OpenCV</span>
+                        <span class="skill-item">MLFlow</span>
+                        <span class="skill-item">Hugging Face</span>
+                        <span class="skill-item">Quantization / AMP</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fab fa-aws"></i> AWS & Cloud</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">SageMaker</span>
+                        <span class="skill-item">EC2</span>
+                        <span class="skill-item">S3</span>
+                        <span class="skill-item">Lambda</span>
+                        <span class="skill-item">CloudWatch</span>
+                        <span class="skill-item">Docker</span>
+                        <span class="skill-item">CI/CD Pipelines</span>
+                        <span class="skill-item">Gunicorn / Render</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-server"></i> Data Engineering</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Snowflake</span>
+                        <span class="skill-item">PySpark</span>
+                        <span class="skill-item">SparkSQL</span>
+                        <span class="skill-item">Pandas</span>
+                        <span class="skill-item">NumPy</span>
+                        <span class="skill-item">ETL Pipelines</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-network-wired"></i> Web & APIs</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">FastAPI</span>
+                        <span class="skill-item">Flask</span>
+                        <span class="skill-item">REST APIs</span>
+                        <span class="skill-item">BeautifulSoup</span>
+                        <span class="skill-item">React</span>
+                        <span class="skill-item">HTML/CSS</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-tools"></i> Tools & Practices</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Agile / Scrum</span>
+                        <span class="skill-item">PyTest</span>
+                        <span class="skill-item">Jupyter</span>
+                        <span class="skill-item">Power BI</span>
+                        <span class="skill-item">System Design</span>
+                        <span class="skill-item">Code Review</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="research-grid">
-            <div class="research-card fade-in">
-                <div class="research-icon"><i class="fas fa-project-diagram"></i></div>
-                <h3>Transformer Models</h3>
-                <p>Advanced architectures for sequence modeling, attention mechanisms, and transfer learning in NLP and computer vision tasks.</p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Research -->
+    <div class="section-wrap" id="research">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <span class="section-label">Research</span>
+                <h2 class="section-title">Areas of Interest</h2>
+                <p class="section-desc">Exploring the frontiers of AI — from transformer architectures to real-time production systems.</p>
             </div>
             
-            <div class="research-card fade-in">
-                <div class="research-icon"><i class="fas fa-eye"></i></div>
-                <h3>Computer Vision</h3>
-                <p>Real-time object detection, image segmentation, and facial recognition systems using CNNs and vision transformers.</p>
-            </div>
-            
-            <div class="research-card fade-in">
-                <div class="research-icon"><i class="fas fa-bolt"></i></div>
-                <h3>Real-Time AI</h3>
-                <p>Low-latency inference systems, edge computing, and optimization techniques for production ML applications.</p>
-            </div>
-            
-            <div class="research-card fade-in">
-                <div class="research-icon"><i class="fas fa-microchip"></i></div>
-                <h3>GPU Acceleration</h3>
-                <p>CUDA programming, mixed-precision training, and hardware-aware model optimization for deep learning workloads.</p>
-            </div>
-            
-            <div class="research-card fade-in">
-                <div class="research-icon"><i class="fas fa-cogs"></i></div>
-                <h3>Model Optimization</h3>
-                <p>Quantization, pruning, distillation, and efficient architectures for deploying ML models at scale.</p>
-            </div>
-            
-            <div class="research-card fade-in">
-                <div class="research-icon"><i class="fas fa-brain"></i></div>
-                <h3>Fuzzy Computing</h3>
-                <p>Fuzzy logic systems, uncertainty modeling, and hybrid AI approaches for complex decision-making scenarios.</p>
+            <div class="research-grid">
+                <div class="research-card fade-in">
+                    <div class="research-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h3>Transformer Models</h3>
+                    <p>Advanced architectures for sequence modeling, attention mechanisms, and transfer learning in NLP and computer vision tasks.</p>
+                </div>
+                <div class="research-card fade-in">
+                    <div class="research-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Computer Vision</h3>
+                    <p>Real-time object detection, image segmentation, and vision-language models for production applications.</p>
+                </div>
+                <div class="research-card fade-in">
+                    <div class="research-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Real-Time AI</h3>
+                    <p>Low-latency inference systems, edge computing, and optimization techniques for production ML applications.</p>
+                </div>
+                <div class="research-card fade-in">
+                    <div class="research-icon"><i class="fas fa-comments"></i></div>
+                    <h3>LLM Integration</h3>
+                    <p>Building production applications powered by large language models — from API design to context management and evaluation.</p>
+                </div>
+                <div class="research-card fade-in">
+                    <div class="research-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Model Optimization</h3>
+                    <p>Quantization, pruning, distillation, and efficient architectures for deploying ML models at scale on AWS.</p>
+                </div>
+                <div class="research-card fade-in">
+                    <div class="research-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Fuzzy Computing</h3>
+                    <p>Fuzzy logic systems, uncertainty modeling, and hybrid AI approaches for complex decision-making scenarios.</p>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <div class="section-divider"></div>
     
     <!-- Publications -->
-    <section id="publications">
-        <div class="section-header fade-in">
-            <div class="section-label">Publications</div>
-            <h2 class="section-title">Research Contributions</h2>
-            <p class="section-description">
-                Published work in fuzzy computing, computer vision, and machine learning applications.
-            </p>
-        </div>
-        
-        <div class="publication-card fade-in">
-            <h3 class="publication-title">Fuzzy Computing in Data Science</h3>
-            <p class="publication-meta">
-                Book Chapter • Co-authored with Prof. Monideepa Das<br>
-                John Wiley & Sons, 2022 • ISBN: 9781119864929
-            </p>
-            <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/9781394156887.ch2" target="_blank" class="publication-link">
-                Read Chapter <i class="fas fa-external-link-alt"></i>
-            </a>
-        </div>
-        
-        <div class="publication-card fade-in">
-            <h3 class="publication-title">Real-Time Driver Drowsiness Detection Using Fuzzy Logic</h3>
-            <p class="publication-meta">
-                Research Paper • Computer Vision & Safety Systems<br>
-                Illinois Institute of Technology, 2024
-            </p>
-            <a href="https://drive.google.com/file/d/1Ny1ut_aaXuasdJaiA2a9_4u5oKk8uo5r/view?usp=sharing" target="_blank" class="publication-link">
-                View Paper <i class="fas fa-external-link-alt"></i>
-            </a>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-header fade-in">
-            <div class="section-label">Let's Connect</div>
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-description">
-                Open to full-time opportunities in Machine Learning Engineering, AI Research, and Software Development. 
-                Based in Chicago, IL.
-            </p>
-        </div>
-        
-        <div class="contact-content fade-in">
-            <div class="contact-links">
-                <a href="mailto:vatsal.mishra12@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i>
-                    <span>vatsal.mishra12@gmail.com</span>
-                </a>
-                
-                <a href="https://www.linkedin.com/in/vatsal-mishra-a936a8271/" target="_blank" class="contact-link">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn Profile</span>
-                </a>
-                
-                <a href="tel:8722656411" class="contact-link">
-                    <i class="fas fa-phone"></i>
-                    <span>(872) 265-6411</span>
-                </a>
+    <div class="section-wrap" id="publications">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <span class="section-label">Publications</span>
+                <h2 class="section-title">Research Contributions</h2>
+                <p class="section-desc">Published work in fuzzy computing, computer vision, and machine learning applications.</p>
+            </div>
+            
+            <div class="publication-card fade-in">
+                <div class="pub-icon"><i class="fas fa-book"></i></div>
+                <div>
+                    <h3 class="publication-title">Fuzzy Computing in Data Science</h3>
+                    <p class="publication-meta">
+                        Book Chapter &nbsp;·&nbsp; Co-authored with Prof. Monideepa Das<br>
+                        John Wiley & Sons, 2022 &nbsp;·&nbsp; ISBN: 9781119864929
+                    </p>
+                    <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/9781394156887.ch2" target="_blank" class="publication-link">
+                        Read Chapter <i class="fas fa-arrow-right" style="font-size:0.8em;"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="publication-card fade-in">
+                <div class="pub-icon"><i class="fas fa-file-alt"></i></div>
+                <div>
+                    <h3 class="publication-title">Real-Time Driver Drowsiness Detection Using Fuzzy Logic</h3>
+                    <p class="publication-meta">
+                        Research Paper &nbsp;·&nbsp; Computer Vision & Safety Systems<br>
+                        Illinois Institute of Technology, 2024
+                    </p>
+                    <a href="https://drive.google.com/file/d/1Ny1ut_aaXuasdJaiA2a9_4u5oKk8uo5r/view?usp=sharing" target="_blank" class="publication-link">
+                        View Paper <i class="fas fa-arrow-right" style="font-size:0.8em;"></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <div class="section-divider"></div>
     
-    <!-- Project Modals -->
-    <!-- Social Media Dashboard Modal -->
+    <!-- Contact -->
+    <div class="section-wrap" id="contact">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <span class="section-label">Let's Connect</span>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-desc">Open to full-time opportunities in AI Engineering, ML Engineering, and Software Development. Based in Chicago, IL.</p>
+            </div>
+            
+            <div class="contact-content fade-in">
+                <div class="contact-links">
+                    <a href="mailto:vatsal.mishra12@gmail.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>vatsal.mishra12@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/vatsal-mishra-a936a8271/" target="_blank" class="contact-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/vatsalmishra024-pixel" target="_blank" class="contact-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="tel:8722656411" class="contact-link">
+                        <i class="fas fa-phone"></i>
+                        <span>(872) 265-6411</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modals -->
     <div id="modal-social-dashboard" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <span class="modal-close" data-modal="social-dashboard">&times;</span>
                 <h2 class="modal-title">Social Media Analytics Dashboard</h2>
-                <p class="modal-subtitle">Enterprise-grade real-time analytics platform for social media performance monitoring and strategic decision-making</p>
+                <p class="modal-subtitle">Enterprise-grade real-time analytics platform for social media performance monitoring</p>
             </div>
             <div class="modal-body">
                 <div class="modal-section">
                     <h3><i class="fas fa-bullseye"></i> Project Overview</h3>
-                    <p>
-                        Designed and implemented a comprehensive real-time analytics dashboard for monitoring social media engagement 
-                        metrics and assessing campaign performance across multiple platforms. The solution provides actionable insights 
-                        through automated data ingestion, transformation, and visualization, enabling marketing teams to make data-driven 
-                        decisions instantly.
-                    </p>
+                    <p>Designed and implemented a comprehensive real-time analytics dashboard for monitoring social media engagement metrics and assessing campaign performance across multiple platforms. The solution provides actionable insights through automated data ingestion, transformation, and visualization.</p>
                 </div>
-                
                 <div class="modal-section">
                     <h3><i class="fas fa-cogs"></i> Technical Architecture</h3>
                     <ul>
                         <li>Built scalable ETL pipelines using Python and PySpark for processing millions of social media events daily</li>
-                        <li>Implemented Snowflake data warehousing with optimized schema design for query performance</li>
-                        <li>Designed star schema with fact and dimension tables for efficient analytical queries</li>
+                        <li>Implemented Snowflake data warehousing with optimized star schema for efficient analytical queries</li>
                         <li>Created real-time data ingestion layer using streaming APIs and webhooks</li>
                         <li>Developed interactive Power BI dashboards with drill-down capabilities and custom DAX measures</li>
-                        <li>Implemented SQL stored procedures for complex aggregations and time-series analysis</li>
                     </ul>
                 </div>
-                
                 <div class="modal-section">
-                    <h3><i class="fas fa-chart-bar"></i> Key Metrics & Impact</h3>
+                    <h3><i class="fas fa-chart-bar"></i> Key Metrics</h3>
                     <div class="metrics-grid">
-                        <div class="metric-card">
-                            <span class="metric-value">Weeks → Minutes</span>
-                            <span class="metric-label">Reporting Time Reduction</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-value">10M+</span>
-                            <span class="metric-label">Events Processed Daily</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-value">5+</span>
-                            <span class="metric-label">Social Platforms Integrated</span>
-                        </div>
+                        <div class="metric-card"><span class="metric-value">Weeks→Min</span><span class="metric-label">Reporting Time</span></div>
+                        <div class="metric-card"><span class="metric-value">10M+</span><span class="metric-label">Events Daily</span></div>
+                        <div class="metric-card"><span class="metric-value">5+</span><span class="metric-label">Platforms</span></div>
                     </div>
                 </div>
-                
-                <div class="modal-section">
-                    <h3><i class="fas fa-trophy"></i> Key Achievements</h3>
-                    <ul>
-                        <li>Reduced reporting time from weeks to minutes through automated real-time data ingestion and processing</li>
-                        <li>Enabled stakeholders to monitor campaign performance in real-time with sub-second dashboard refresh rates</li>
-                        <li>Improved decision-making speed by 80% with automated alerts and anomaly detection</li>
-                        <li>Scaled system to handle 10x traffic growth without performance degradation</li>
-                    </ul>
-                </div>
-                
                 <div class="modal-section">
                     <h3><i class="fas fa-layer-group"></i> Technology Stack</h3>
                     <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">PySpark</span>
-                        <span class="tech-tag">Snowflake</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">Power BI</span>
-                        <span class="tech-tag">DAX</span>
-                        <span class="tech-tag">ETL Pipelines</span>
-                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">Python</span><span class="tech-tag">PySpark</span><span class="tech-tag">Snowflake</span><span class="tech-tag">SQL</span><span class="tech-tag">Power BI</span><span class="tech-tag">ETL Pipelines</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Driver Drowsiness Detection Modal -->
     <div id="modal-drowsiness-detection" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <span class="modal-close" data-modal="drowsiness-detection">&times;</span>
                 <h2 class="modal-title">Real-Time Driver Drowsiness Detection</h2>
-                <p class="modal-subtitle">Computer vision system using fuzzy logic and facial feature recognition for road safety enhancement</p>
+                <p class="modal-subtitle">Computer vision system using fuzzy logic and facial feature recognition for road safety</p>
             </div>
             <div class="modal-body">
                 <div class="modal-section">
                     <h3><i class="fas fa-bullseye"></i> Research Overview</h3>
-                    <p>
-                        Developed an advanced vision-based driver drowsiness detection system under the supervision of Prof. Monideepa Das 
-                        at Illinois Institute of Technology. The system employs sophisticated fuzzy logic algorithms combined with real-time 
-                        facial feature recognition to detect early signs of driver fatigue, potentially preventing accidents caused by drowsy driving.
-                    </p>
+                    <p>Developed an advanced vision-based driver drowsiness detection system under Prof. Monideepa Das at Illinois Institute of Technology. The system employs fuzzy logic algorithms combined with real-time facial feature recognition to detect early signs of driver fatigue.</p>
                 </div>
-                
                 <div class="modal-section">
                     <h3><i class="fas fa-microscope"></i> Technical Implementation</h3>
                     <ul>
                         <li>Implemented real-time facial landmark detection using OpenCV and Dlib for tracking eye aspect ratio (EAR) and mouth aspect ratio (MAR)</li>
-                        <li>Designed fuzzy logic inference system with membership functions for drowsiness levels (Alert, Drowsy, Severely Drowsy)</li>
-                        <li>Developed Python-based real-time video processing pipeline achieving 30+ FPS on standard hardware</li>
-                        <li>Applied histogram equalization and adaptive filtering for robust performance in varying lighting conditions</li>
-                        <li>Integrated audio-visual alerting mechanism with graduated warning levels based on drowsiness severity</li>
-                        <li>Implemented temporal smoothing algorithms to reduce false positives from legitimate eye blinks</li>
+                        <li>Designed fuzzy logic inference system with membership functions for drowsiness levels</li>
+                        <li>Developed Python-based video processing pipeline achieving 30+ FPS on standard hardware</li>
+                        <li>Applied histogram equalization for robust performance in varying lighting conditions</li>
                     </ul>
                 </div>
-                
                 <div class="modal-section">
-                    <h3><i class="fas fa-chart-bar"></i> Performance Metrics</h3>
+                    <h3><i class="fas fa-chart-bar"></i> Performance</h3>
                     <div class="metrics-grid">
-                        <div class="metric-card">
-                            <span class="metric-value">74%</span>
-                            <span class="metric-label">Detection Accuracy</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-value">15%</span>
-                            <span class="metric-label">False Alarm Reduction</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-value">30+ FPS</span>
-                            <span class="metric-label">Real-Time Processing</span>
-                        </div>
+                        <div class="metric-card"><span class="metric-value">74%</span><span class="metric-label">Accuracy</span></div>
+                        <div class="metric-card"><span class="metric-value">15%</span><span class="metric-label">False Alarm Reduction</span></div>
+                        <div class="metric-card"><span class="metric-value">30+ FPS</span><span class="metric-label">Real-Time</span></div>
                     </div>
                 </div>
-                
-                <div class="modal-section">
-                    <h3><i class="fas fa-flask"></i> Research Contributions</h3>
-                    <ul>
-                        <li>Achieved 74% accuracy rate through advanced fuzzy logic and facial feature recognition algorithms</li>
-                        <li>Reduced false alarm rate by 15% compared to baseline methods, minimizing driver distraction</li>
-                        <li>Demonstrated robustness across diverse demographics and environmental conditions</li>
-                        <li>Published findings contributing to automotive safety research and drowsy driving prevention</li>
-                    </ul>
-                </div>
-                
                 <div class="modal-section">
                     <h3><i class="fas fa-layer-group"></i> Technology Stack</h3>
                     <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">OpenCV</span>
-                        <span class="tech-tag">Dlib</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">Fuzzy Logic</span>
-                        <span class="tech-tag">Computer Vision</span>
-                        <span class="tech-tag">Real-Time Processing</span>
-                        <span class="tech-tag">Image Processing</span>
+                        <span class="tech-tag">Python</span><span class="tech-tag">OpenCV</span><span class="tech-tag">Dlib</span><span class="tech-tag">Fuzzy Logic</span><span class="tech-tag">NumPy</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- NLP Classification Modal -->
     <div id="modal-nlp-classification" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <span class="modal-close" data-modal="nlp-classification">&times;</span>
                 <h2 class="modal-title">Advanced NLP Text Classification</h2>
-                <p class="modal-subtitle">Machine learning system for automated text analysis and categorization using state-of-the-art NLP techniques</p>
+                <p class="modal-subtitle">Machine learning system for automated text analysis using state-of-the-art NLP techniques</p>
             </div>
             <div class="modal-body">
                 <div class="modal-section">
                     <h3><i class="fas fa-bullseye"></i> Project Overview</h3>
-                    <p>
-                        Developed a sophisticated natural language processing model for analyzing and classifying large text datasets 
-                        under the guidance of Prof. Kai Shu at Illinois Institute of Technology. The project focused on implementing 
-                        advanced preprocessing techniques and machine learning algorithms to improve text classification accuracy for 
-                        real-world applications.
-                    </p>
+                    <p>Developed a sophisticated NLP model for analyzing and classifying large text datasets under Prof. Kai Shu at Illinois Institute of Technology. Implemented advanced preprocessing techniques and ML algorithms to improve classification accuracy.</p>
                 </div>
-                
                 <div class="modal-section">
                     <h3><i class="fas fa-brain"></i> Technical Implementation</h3>
                     <ul>
                         <li>Implemented comprehensive text preprocessing pipeline including tokenization, stemming, and lemmatization using spaCy and NLTK</li>
-                        <li>Developed custom feature extraction using TF-IDF, word embeddings (Word2Vec, GloVe), and contextual embeddings</li>
-                        <li>Trained ensemble models combining traditional ML (SVM, Random Forest) with deep learning approaches (LSTM, BERT)</li>
-                        <li>Applied advanced techniques including data augmentation, class balancing, and hyperparameter optimization</li>
-                        <li>Implemented cross-validation and stratified sampling for robust model evaluation</li>
-                        <li>Developed model interpretation techniques using LIME and SHAP for explainability</li>
+                        <li>Developed custom feature extraction using TF-IDF, Word2Vec, and contextual embeddings</li>
+                        <li>Trained ensemble models combining traditional ML (SVM, Random Forest) with BERT-based approaches</li>
+                        <li>Applied data augmentation, class balancing, and hyperparameter optimization</li>
                     </ul>
                 </div>
-                
                 <div class="modal-section">
-                    <h3><i class="fas fa-chart-bar"></i> Performance Metrics</h3>
+                    <h3><i class="fas fa-chart-bar"></i> Performance</h3>
                     <div class="metrics-grid">
-                        <div class="metric-card">
-                            <span class="metric-value">15%</span>
-                            <span class="metric-label">Accuracy Improvement</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-value">100K+</span>
-                            <span class="metric-label">Documents Analyzed</span>
-                        </div>
-                        <div class="metric-card">
-                            <span class="metric-value">10+</span>
-                            <span class="metric-label">Text Categories</span>
-                        </div>
+                        <div class="metric-card"><span class="metric-value">15%</span><span class="metric-label">Accuracy Gain</span></div>
+                        <div class="metric-card"><span class="metric-value">100K+</span><span class="metric-label">Documents</span></div>
+                        <div class="metric-card"><span class="metric-value">10+</span><span class="metric-label">Categories</span></div>
                     </div>
                 </div>
-                
-                <div class="modal-section">
-                    <h3><i class="fas fa-users"></i> Agile Development Process</h3>
-                    <ul>
-                        <li>Leveraged Agile methodology to foster collaboration with multidisciplinary team of researchers and developers</li>
-                        <li>Implemented iterative development cycles with regular sprint reviews and model refinement</li>
-                        <li>Established continuous feedback loops for model parameter tuning and feature engineering</li>
-                        <li>Achieved 15% improvement in prediction accuracy through collaborative optimization</li>
-                    </ul>
-                </div>
-                
                 <div class="modal-section">
                     <h3><i class="fas fa-layer-group"></i> Technology Stack</h3>
                     <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">spaCy</span>
-                        <span class="tech-tag">NLTK</span>
-                        <span class="tech-tag">Scikit-learn</span>
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Transformers (BERT)</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">Matplotlib</span>
+                        <span class="tech-tag">Python</span><span class="tech-tag">spaCy</span><span class="tech-tag">BERT</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">TensorFlow</span>
                     </div>
                 </div>
             </div>
@@ -2037,117 +1980,71 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 Vatsal Mishra. All rights reserved.</p>
-            <div class="visitor-counter">
-                <i class="fas fa-users"></i>
-                <span id="visitor-count">Loading...</span>
-                <span>visitors</span>
+            <p>© 2026 Vatsal Mishra · AI & ML Engineer · Chicago, IL</p>
+            <div class="footer-links">
+                <a href="mailto:vatsal.mishra12@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/vatsal-mishra-a936a8271/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/vatsalmishra024-pixel" target="_blank">GitHub</a>
+                <a href="https://drive.google.com/file/d/1IEDGo3jiCwXRxRTa5l39vdqkimVqeQMh/view?usp=sharing" target="_blank">Resume</a>
+                <a href="https://web-production-abd87.up.railway.app/" target="_blank">VIN Inspector Pro</a>
             </div>
         </div>
     </footer>
     
     <script>
-        // Navbar scroll effect
+        // Navbar scroll
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
         });
         
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
         
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
+        // Fade-in observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, observerOptions);
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
         
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         
-        // Visitor counter
-        fetch('https://api.countapi.xyz/hit/vatsalmishra-portfolio/visits')
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('visitor-count').textContent = data.value.toLocaleString();
-            })
-            .catch(() => {
-                document.getElementById('visitor-count').textContent = '10,000+';
-            });
-        
-        // Project Modal Functionality
-        const projectCards = document.querySelectorAll('.project-card');
-        const modals = document.querySelectorAll('.modal');
-        const modalCloses = document.querySelectorAll('.modal-close');
-        
-        // Open modal when project card is clicked
-        projectCards.forEach(card => {
+        // Modals
+        document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('click', () => {
-                const projectId = card.getAttribute('data-project');
-                const modal = document.getElementById(`modal-${projectId}`);
-                if (modal) {
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                }
+                const modal = document.getElementById(`modal-${card.dataset.project}`);
+                if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
             });
         });
         
-        // Close modal when X is clicked
-        modalCloses.forEach(closeBtn => {
-            closeBtn.addEventListener('click', (e) => {
+        document.querySelectorAll('.modal-close').forEach(btn => {
+            btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const modalId = closeBtn.getAttribute('data-modal');
-                const modal = document.getElementById(`modal-${modalId}`);
-                if (modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
+                document.getElementById(`modal-${btn.dataset.modal}`).classList.remove('active');
+                document.body.style.overflow = 'auto';
             });
         });
         
-        // Close modal when clicking outside the modal content
-        modals.forEach(modal => {
+        document.querySelectorAll('.modal').forEach(modal => {
             modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
+                if (e.target === modal) { modal.classList.remove('active'); document.body.style.overflow = 'auto'; }
             });
         });
         
-        // Close modal with Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                modals.forEach(modal => {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                });
+                document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+                document.body.style.overflow = 'auto';
             }
         });
     </script>
-    
+
     <!-- Statcounter -->
     <script type="text/javascript">
     var sc_project=13187511; 
