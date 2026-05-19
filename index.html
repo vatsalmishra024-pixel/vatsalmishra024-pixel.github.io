@@ -40,7 +40,6 @@
             line-height: 1.7;
         }
 
-        /* Subtle grid background */
         body::before {
             content: '';
             position: fixed;
@@ -62,7 +61,6 @@
                 radial-gradient(ellipse at 85% 70%, rgba(200,131,79,0.05) 0%, transparent 50%);
         }
         
-        /* ─── NAVIGATION ─── */
         nav {
             position: fixed;
             top: 0;
@@ -147,7 +145,6 @@
         }
         .nav-cta::after { display: none !important; }
 
-        /* ─── HERO ─── */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -240,7 +237,6 @@
             animation: fadeInUp 0.7s ease 0.3s both;
         }
 
-        /* Mark Cuban callout */
         .mark-cuban-badge {
             display: inline-flex;
             align-items: flex-start;
@@ -356,7 +352,6 @@
             background: var(--accent-dim);
         }
 
-        /* Profile photo */
         .hero-profile-section {
             display: flex;
             justify-content: flex-end;
@@ -408,7 +403,6 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
         
-        /* ─── SECTIONS ─── */
         .section-wrap {
             padding: 6rem 5%;
         }
@@ -450,14 +444,12 @@
             line-height: 1.8;
         }
 
-        /* Section divider */
         .section-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--border), transparent);
             margin: 0 5%;
         }
         
-        /* ─── EXPERIENCE ─── */
         .experience-grid { display: grid; gap: 2rem; }
         
         .experience-card {
@@ -574,7 +566,6 @@
             font-weight: bold;
         }
         
-        /* ─── FEATURED PROJECT ─── */
         .featured-project {
             background: var(--card);
             border: 1px solid rgba(200,131,79,0.2);
@@ -728,7 +719,6 @@
             font-weight: 600;
         }
 
-        /* Mark Cuban inline callout */
         .mc-callout {
             display: flex;
             align-items: flex-start;
@@ -838,7 +828,6 @@
             border-color: var(--accent-bright);
         }
         
-        /* ─── PROJECTS GRID ─── */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -914,7 +903,6 @@
             white-space: nowrap;
         }
         
-        /* ─── SKILLS ─── */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -967,7 +955,6 @@
             transform: translateY(-1px);
         }
         
-        /* ─── RESEARCH ─── */
         .research-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -1003,7 +990,6 @@
         
         .research-card p { color: var(--text-muted); line-height: 1.7; font-size: 0.93rem; }
         
-        /* ─── PUBLICATIONS ─── */
         .publication-card {
             background: var(--card);
             border: 1px solid var(--border);
@@ -1066,7 +1052,6 @@
             color: var(--accent);
         }
         
-        /* ─── CONTACT ─── */
         .contact-content { text-align: center; max-width: 700px; margin: 0 auto; }
         
         .contact-links {
@@ -1106,7 +1091,6 @@
 
         .contact-link span { font-size: 0.9rem; font-weight: 500; }
         
-        /* ─── FOOTER ─── */
         footer {
             border-top: 1px solid var(--border);
             padding: 2.5rem 5%;
@@ -1137,7 +1121,6 @@
 
         .footer-links a:hover { color: var(--accent-bright); }
         
-        /* ─── ANIMATIONS ─── */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1151,7 +1134,6 @@
         
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         
-        /* ─── MODALS ─── */
         .modal {
             display: none;
             position: fixed;
@@ -1274,7 +1256,6 @@
         
         .metric-label { color: var(--text-muted); font-size: 0.85rem; }
 
-        /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
             .hero-content { grid-template-columns: 1fr; gap: 3rem; }
             .hero-text { order: 2; }
@@ -1305,7 +1286,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">Vatsal<span>.</span></a>
@@ -1321,7 +1301,6 @@
         </div>
     </nav>
     
-    <!-- Hero -->
     <section class="hero" id="about">
         <div class="hero-bg-city"></div>
         <div class="hero-bg-fade"></div>
@@ -1387,7 +1366,6 @@
 
     <div class="section-divider"></div>
     
-    <!-- Experience -->
     <div class="section-wrap" id="experience">
         <div class="section-inner">
             <div class="section-header fade-in">
@@ -1398,15 +1376,14 @@
             
             <div class="experience-grid">
 
-                <!-- Musync Current -->
-                <div class="experience-card exp-current fade-in">
-                    <div class="current-dot">Current Role</div>
+                <!-- Musync Current — UPDATED: Feb 2026 – Mar 2026 -->
+                <div class="experience-card fade-in">
                     <div class="experience-header">
                         <div class="company-info">
                             <h3>Musync LLC</h3>
                             <div class="role">Software Engineer</div>
                         </div>
-                        <div class="date-badge">Jan 2026 – Present</div>
+                        <div class="date-badge">Feb 2026 – Mar 2026</div>
                     </div>
                     <p class="experience-description">
                         Building evaluation infrastructure, analytics pipelines, and cross-platform API systems supporting 
@@ -1498,7 +1475,6 @@
 
     <div class="section-divider"></div>
     
-    <!-- Projects -->
     <div class="section-wrap" id="projects">
         <div class="section-inner">
             <div class="section-header fade-in">
@@ -1507,7 +1483,6 @@
                 <p class="section-desc">Real-world applications of LLMs, computer vision, and full-stack AI engineering.</p>
             </div>
             
-            <!-- VIN Inspector Pro -->
             <div class="featured-project fade-in">
                 <div class="featured-badge">V3 Live ✦ Mark Cuban Validated</div>
                 <div class="featured-content">
@@ -1590,7 +1565,6 @@
                 </div>
             </div>
             
-            <!-- Other Projects -->
             <div class="projects-grid">
                 <div class="project-card fade-in" data-project="social-dashboard">
                     <div class="project-image img-blue">
@@ -1647,7 +1621,6 @@
 
     <div class="section-divider"></div>
     
-    <!-- Skills -->
     <div class="section-wrap" id="skills">
         <div class="section-inner">
             <div class="section-header fade-in">
@@ -1740,7 +1713,6 @@
 
     <div class="section-divider"></div>
 
-    <!-- Research -->
     <div class="section-wrap" id="research">
         <div class="section-inner">
             <div class="section-header fade-in">
@@ -1786,7 +1758,6 @@
 
     <div class="section-divider"></div>
     
-    <!-- Publications -->
     <div class="section-wrap" id="publications">
         <div class="section-inner">
             <div class="section-header fade-in">
@@ -1827,7 +1798,6 @@
 
     <div class="section-divider"></div>
     
-    <!-- Contact -->
     <div class="section-wrap" id="contact">
         <div class="section-inner">
             <div class="section-header fade-in">
@@ -1855,7 +1825,6 @@
         </div>
     </div>
     
-    <!-- Modals -->
     <div id="modal-social-dashboard" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1973,7 +1942,6 @@
         </div>
     </div>
     
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <p>© 2026 Vatsal Mishra · AI & ML Engineer · Chicago, IL</p>
@@ -1987,12 +1955,10 @@
     </footer>
     
     <script>
-        // Navbar scroll
         window.addEventListener('scroll', () => {
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
         });
         
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -2001,7 +1967,6 @@
             });
         });
         
-        // Fade-in observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -2010,7 +1975,6 @@
         
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         
-        // Modals
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('click', () => {
                 const modal = document.getElementById(`modal-${card.dataset.project}`);
@@ -2040,7 +2004,6 @@
         });
     </script>
 
-    <!-- Statcounter -->
     <script type="text/javascript">
     var sc_project=13187511; 
     var sc_invisible=1; 
