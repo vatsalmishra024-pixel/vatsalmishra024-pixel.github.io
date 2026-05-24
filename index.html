@@ -145,6 +145,24 @@
         }
         .nav-cta::after { display: none !important; }
 
+        /* Mobile hamburger toggle (hidden on desktop) */
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            padding: 0.4rem;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #ffffff;
+            margin: 5px 0;
+            border-radius: 1px;
+        }
+
         .hero {
             min-height: 100vh;
             display: flex;
@@ -1282,6 +1300,22 @@
             .modal-header, .modal-body { padding: 1.8rem; }
             .modal-title { font-size: 1.5rem; }
             .profile-pic { width: 220px; height: 220px; }
+            /* Show hamburger on mobile and style mobile menu open state */
+            .nav-toggle { display: block; }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(17,16,16,0.97);
+                padding: 1.5rem 5%;
+                gap: 1.2rem;
+                border-bottom: 1px solid var(--border);
+                z-index: 900;
+            }
         }
     </style>
 </head>
@@ -1298,6 +1332,9 @@
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="https://drive.google.com/file/d/1IEDGo3jiCwXRxRTa5l39vdqkimVqeQMh/view?usp=sharing" target="_blank" class="nav-cta"><i class="fas fa-file-pdf"></i> Resume</a></li>
             </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
     
@@ -1487,13 +1524,20 @@
                 <div class="featured-badge">Live · 444+ Real Users ✦ Mark Cuban Validated</div>
                 <div class="featured-content">
                     <div class="featured-visual">
-                        <div class="vin-branding" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem;min-height:480px;">
-                            <div class="logo-box" style="width:120px;height:120px;border-radius:24px;background:#0f1f35;display:flex;align-items:center;justify-content:center;position:relative;">
-                                <span class="logo-v" style="color:#ffffff;font-size:3rem;font-weight:900;line-height:1;">V</span>
+                        <div class="vin-branding" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 2.5rem;min-height:auto;">
+                            <div class="logo-box" style="width:140px;height:140px;border-radius:24px;background:#0f1f35;display:flex;align-items:center;justify-content:center;position:relative;">
+                                <span class="logo-v" style="color:#ffffff;font-size:3.5rem;font-weight:900;line-height:1;">V</span>
                                 <span class="pro-badge" style="position:absolute;right:-6px;bottom:-6px;background:#10b981;color:#ffffff;font-weight:700;padding:4px 8px;border-radius:8px;font-size:0.65rem;">PRO</span>
                             </div>
                             <div class="product-name" style="margin-top:1rem;font-weight:700;font-size:1.2rem;color:#ffffff;">VIN Inspector Pro</div>
                             <div class="product-sub" style="margin-top:0.35rem;font-size:0.72rem;color:rgba(255,255,255,0.55);letter-spacing:1px;text-transform:uppercase;">AI-POWERED USED CAR RESEARCH</div>
+
+                            <ul class="vin-brand-features" style="list-style:none;margin-top:1.5rem;display:flex;flex-direction:column;gap:0.6rem;padding:0;">
+                                <li style="font-size:0.85rem;color:rgba(255,255,255,0.65);padding:0.4rem 0;">🎯 Buy / Negotiate / Walk Away verdict</li>
+                                <li style="font-size:0.85rem;color:rgba(255,255,255,0.65);padding:0.4rem 0;">🤖 CarPal AI — GPT-4o negotiation advisor</li>
+                                <li style="font-size:0.85rem;color:rgba(255,255,255,0.65);padding:0.4rem 0;">📸 Photo damage inspection via vision model</li>
+                                <li style="font-size:0.85rem;color:rgba(255,255,255,0.65);padding:0.4rem 0;">🔌 Agentic MCP server for AI integrations</li>
+                            </ul>
 
                             <div class="vin-stats" style="margin-top:1.2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.07);width:100%;max-width:360px;">
                                 <div class="vin-stat">
@@ -1803,7 +1847,7 @@
             </div>
             
             <div class="contact-content fade-in">
-                <div class="contact-links">
+                    <div class="contact-links">
                     <a href="mailto:vatsal.mishra12@gmail.com" class="contact-link">
                         <i class="fas fa-envelope"></i>
                         <span>vatsal.mishra12@gmail.com</span>
@@ -1811,10 +1855,6 @@
                     <a href="https://www.linkedin.com/in/vatsal-mishra-a936a8271/" target="_blank" class="contact-link">
                         <i class="fab fa-linkedin"></i>
                         <span>LinkedIn</span>
-                    </a>
-                    <a href="tel:8722656411" class="contact-link">
-                        <i class="fas fa-phone"></i>
-                        <span>(872) 265-6411</span>
                     </a>
                 </div>
             </div>
@@ -1998,6 +2038,23 @@
                 document.body.style.overflow = 'auto';
             }
         });
+    </script>
+
+    <script>
+        // Mobile nav toggle: open/close and close on link click
+        (function(){
+            const toggle = document.getElementById('navToggle');
+            const navLinks = document.querySelector('.nav-links');
+            if (!toggle || !navLinks) return;
+
+            toggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+
+            navLinks.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', () => navLinks.classList.remove('open'));
+            });
+        })();
     </script>
 
     <script type="text/javascript">
